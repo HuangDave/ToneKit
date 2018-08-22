@@ -7,13 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63FF715A212DB1CF00CB68FB /* ToneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FF7150212DB1CF00CB68FB /* ToneKit.framework */; };
-		63FF715F212DB1CF00CB68FB /* ToneKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF715E212DB1CF00CB68FB /* ToneKitTests.swift */; };
+		63B58C662138F661004F9AA7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 63B58C652138F661004F9AA7 /* .swiftlint.yml */; };
+		63C28383212DB5B6002AA1FF /* MetalDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28382212DB5B6002AA1FF /* MetalDevice.swift */; };
+		63C28385212DB6E5002AA1FF /* TextureInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28384212DB6E5002AA1FF /* TextureInput.swift */; };
+		63C28387212DB726002AA1FF /* TextureOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28386212DB726002AA1FF /* TextureOutput.swift */; };
+		63C2838A212DB8D0002AA1FF /* ImageTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28389212DB8D0002AA1FF /* ImageTexture.swift */; };
+		63C2838F212DBD42002AA1FF /* MTLSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C2838E212DBD42002AA1FF /* MTLSize.swift */; };
+		63C28393212DBD87002AA1FF /* MTLTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28392212DBD87002AA1FF /* MTLTexture.swift */; };
+		63E58EE821421DD800BAE55E /* TextureView.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63E58EE721421DD800BAE55E /* TextureView.metal */; };
+		63E58EF021421E1700BAE55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E58EEF21421E1700BAE55E /* AppDelegate.swift */; };
+		63E58EF221421E1700BAE55E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E58EF121421E1700BAE55E /* ViewController.swift */; };
+		63E58EF521421E1700BAE55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E58EF321421E1700BAE55E /* Main.storyboard */; };
+		63E58EF721421E1800BAE55E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63E58EF621421E1800BAE55E /* Assets.xcassets */; };
+		63E58EFA21421E1800BAE55E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E58EF821421E1800BAE55E /* LaunchScreen.storyboard */; };
+		63E58F0821421E3700BAE55E /* ToneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FF7150212DB1CF00CB68FB /* ToneKit.framework */; };
+		63E58F1221421E9F00BAE55E /* MTLSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E58F1121421E9F00BAE55E /* MTLSizeTests.swift */; };
+		63E58F132142204600BAE55E /* ToneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FF7150212DB1CF00CB68FB /* ToneKit.framework */; };
+		63E58F142142204600BAE55E /* ToneKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63FF7150212DB1CF00CB68FB /* ToneKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63EE1C29213E187E0080DD59 /* MTLTextureUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EE1C28213E187E0080DD59 /* MTLTextureUsage.swift */; };
+		63EE1C2B213E1EDC0080DD59 /* TextureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EE1C2A213E1EDC0080DD59 /* TextureView.swift */; };
+		63EE1C2D213E21780080DD59 /* UniformBufferProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EE1C2C213E21780080DD59 /* UniformBufferProvider.swift */; };
 		63FF7161212DB1CF00CB68FB /* ToneKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FF7153212DB1CF00CB68FB /* ToneKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		63FF715B212DB1CF00CB68FB /* PBXContainerItemProxy */ = {
+		63E58F0921421E3700BAE55E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63FF7147212DB1CF00CB68FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63FF714F212DB1CF00CB68FB;
+			remoteInfo = ToneKit;
+		};
+		63E58F0E21421E4700BAE55E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63FF7147212DB1CF00CB68FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63E58EEC21421E1700BAE55E;
+			remoteInfo = ToneKitExample;
+		};
+		63E58F152142204600BAE55E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 63FF7147212DB1CF00CB68FB /* Project object */;
 			proxyType = 1;
@@ -22,16 +54,65 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		63E58F172142204600BAE55E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				63E58F142142204600BAE55E /* ToneKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		63B58C652138F661004F9AA7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		63C28382212DB5B6002AA1FF /* MetalDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalDevice.swift; sourceTree = "<group>"; };
+		63C28384212DB6E5002AA1FF /* TextureInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureInput.swift; sourceTree = "<group>"; };
+		63C28386212DB726002AA1FF /* TextureOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureOutput.swift; sourceTree = "<group>"; };
+		63C28389212DB8D0002AA1FF /* ImageTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTexture.swift; sourceTree = "<group>"; };
+		63C2838E212DBD42002AA1FF /* MTLSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLSize.swift; sourceTree = "<group>"; };
+		63C28392212DBD87002AA1FF /* MTLTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLTexture.swift; sourceTree = "<group>"; };
+		63E58EE721421DD800BAE55E /* TextureView.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TextureView.metal; sourceTree = "<group>"; };
+		63E58EED21421E1700BAE55E /* ToneKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63E58EEF21421E1700BAE55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		63E58EF121421E1700BAE55E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		63E58EF421421E1700BAE55E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		63E58EF621421E1800BAE55E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63E58EF921421E1800BAE55E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		63E58EFB21421E1800BAE55E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63E58F0321421E3700BAE55E /* ToneKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToneKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63E58F0721421E3700BAE55E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63E58F1021421E9F00BAE55E /* ToneKitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToneKitTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		63E58F1121421E9F00BAE55E /* MTLSizeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLSizeTests.swift; sourceTree = "<group>"; };
+		63EE1C28213E187E0080DD59 /* MTLTextureUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLTextureUsage.swift; sourceTree = "<group>"; };
+		63EE1C2A213E1EDC0080DD59 /* TextureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureView.swift; sourceTree = "<group>"; };
+		63EE1C2C213E21780080DD59 /* UniformBufferProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniformBufferProvider.swift; sourceTree = "<group>"; };
 		63FF7150212DB1CF00CB68FB /* ToneKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ToneKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63FF7153212DB1CF00CB68FB /* ToneKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToneKit.h; sourceTree = "<group>"; };
 		63FF7154212DB1CF00CB68FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63FF7159212DB1CF00CB68FB /* ToneKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToneKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		63FF715E212DB1CF00CB68FB /* ToneKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneKitTests.swift; sourceTree = "<group>"; };
-		63FF7160212DB1CF00CB68FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		63E58EEA21421E1700BAE55E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63E58F132142204600BAE55E /* ToneKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63E58F0021421E3700BAE55E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63E58F0821421E3700BAE55E /* ToneKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63FF714C212DB1CF00CB68FB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,22 +120,57 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		63FF7156212DB1CF00CB68FB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				63FF715A212DB1CF00CB68FB /* ToneKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63C2838D212DBD2F002AA1FF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				63C2838E212DBD42002AA1FF /* MTLSize.swift */,
+				63C28392212DBD87002AA1FF /* MTLTexture.swift */,
+				63EE1C28213E187E0080DD59 /* MTLTextureUsage.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		63E58EE621421DB400BAE55E /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				63E58EE721421DD800BAE55E /* TextureView.metal */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		63E58EEE21421E1700BAE55E /* ToneKitExample */ = {
+			isa = PBXGroup;
+			children = (
+				63E58EFB21421E1800BAE55E /* Info.plist */,
+				63E58EF821421E1800BAE55E /* LaunchScreen.storyboard */,
+				63E58EF321421E1700BAE55E /* Main.storyboard */,
+				63E58EF621421E1800BAE55E /* Assets.xcassets */,
+				63E58EEF21421E1700BAE55E /* AppDelegate.swift */,
+				63E58EF121421E1700BAE55E /* ViewController.swift */,
+			);
+			path = ToneKitExample;
+			sourceTree = "<group>";
+		};
+		63E58F0421421E3700BAE55E /* ToneKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				63E58F0721421E3700BAE55E /* Info.plist */,
+				63E58F1021421E9F00BAE55E /* ToneKitTests-Bridging-Header.h */,
+				63E58F1121421E9F00BAE55E /* MTLSizeTests.swift */,
+			);
+			path = ToneKitTests;
+			sourceTree = "<group>";
+		};
 		63FF7146212DB1CF00CB68FB = {
 			isa = PBXGroup;
 			children = (
+				63B58C652138F661004F9AA7 /* .swiftlint.yml */,
 				63FF7152212DB1CF00CB68FB /* ToneKit */,
-				63FF715D212DB1CF00CB68FB /* ToneKitTests */,
+				63E58F0421421E3700BAE55E /* ToneKitTests */,
+				63E58EEE21421E1700BAE55E /* ToneKitExample */,
 				63FF7151212DB1CF00CB68FB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,7 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				63FF7150212DB1CF00CB68FB /* ToneKit.framework */,
-				63FF7159212DB1CF00CB68FB /* ToneKitTests.xctest */,
+				63E58EED21421E1700BAE55E /* ToneKitExample.app */,
+				63E58F0321421E3700BAE55E /* ToneKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,19 +188,18 @@
 		63FF7152212DB1CF00CB68FB /* ToneKit */ = {
 			isa = PBXGroup;
 			children = (
-				63FF7153212DB1CF00CB68FB /* ToneKit.h */,
 				63FF7154212DB1CF00CB68FB /* Info.plist */,
+				63FF7153212DB1CF00CB68FB /* ToneKit.h */,
+				63C2838D212DBD2F002AA1FF /* Extensions */,
+				63C28389212DB8D0002AA1FF /* ImageTexture.swift */,
+				63C28382212DB5B6002AA1FF /* MetalDevice.swift */,
+				63C28384212DB6E5002AA1FF /* TextureInput.swift */,
+				63C28386212DB726002AA1FF /* TextureOutput.swift */,
+				63EE1C2A213E1EDC0080DD59 /* TextureView.swift */,
+				63EE1C2C213E21780080DD59 /* UniformBufferProvider.swift */,
+				63E58EE621421DB400BAE55E /* Shaders */,
 			);
 			path = ToneKit;
-			sourceTree = "<group>";
-		};
-		63FF715D212DB1CF00CB68FB /* ToneKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				63FF715E212DB1CF00CB68FB /* ToneKitTests.swift */,
-				63FF7160212DB1CF00CB68FB /* Info.plist */,
-			);
-			path = ToneKitTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -100,6 +216,44 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		63E58EEC21421E1700BAE55E /* ToneKitExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63E58EFC21421E1800BAE55E /* Build configuration list for PBXNativeTarget "ToneKitExample" */;
+			buildPhases = (
+				63E58EE921421E1700BAE55E /* Sources */,
+				63E58EEA21421E1700BAE55E /* Frameworks */,
+				63E58EEB21421E1700BAE55E /* Resources */,
+				63E58F172142204600BAE55E /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63E58F162142204600BAE55E /* PBXTargetDependency */,
+			);
+			name = ToneKitExample;
+			productName = ToneKitExample;
+			productReference = 63E58EED21421E1700BAE55E /* ToneKitExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		63E58F0221421E3700BAE55E /* ToneKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63E58F0B21421E3700BAE55E /* Build configuration list for PBXNativeTarget "ToneKitTests" */;
+			buildPhases = (
+				63E58EFF21421E3700BAE55E /* Sources */,
+				63E58F0021421E3700BAE55E /* Frameworks */,
+				63E58F0121421E3700BAE55E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63E58F0A21421E3700BAE55E /* PBXTargetDependency */,
+				63E58F0F21421E4700BAE55E /* PBXTargetDependency */,
+			);
+			name = ToneKitTests;
+			productName = ToneKitTests;
+			productReference = 63E58F0321421E3700BAE55E /* ToneKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		63FF714F212DB1CF00CB68FB /* ToneKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63FF7164212DB1CF00CB68FB /* Build configuration list for PBXNativeTarget "ToneKit" */;
@@ -108,6 +262,7 @@
 				63FF714C212DB1CF00CB68FB /* Frameworks */,
 				63FF714D212DB1CF00CB68FB /* Headers */,
 				63FF714E212DB1CF00CB68FB /* Resources */,
+				63B58C642138F124004F9AA7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -118,39 +273,27 @@
 			productReference = 63FF7150212DB1CF00CB68FB /* ToneKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		63FF7158212DB1CF00CB68FB /* ToneKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 63FF7167212DB1CF00CB68FB /* Build configuration list for PBXNativeTarget "ToneKitTests" */;
-			buildPhases = (
-				63FF7155212DB1CF00CB68FB /* Sources */,
-				63FF7156212DB1CF00CB68FB /* Frameworks */,
-				63FF7157212DB1CF00CB68FB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				63FF715C212DB1CF00CB68FB /* PBXTargetDependency */,
-			);
-			name = ToneKitTests;
-			productName = ToneKitTests;
-			productReference = 63FF7159212DB1CF00CB68FB /* ToneKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		63FF7147212DB1CF00CB68FB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = David;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
+					63E58EEC21421E1700BAE55E = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					63E58F0221421E3700BAE55E = {
+						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
+						TestTargetID = 63E58EEC21421E1700BAE55E;
+					};
 					63FF714F212DB1CF00CB68FB = {
 						CreatedOnToolsVersion = 9.4.1;
-					};
-					63FF7158212DB1CF00CB68FB = {
-						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -160,6 +303,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 63FF7146212DB1CF00CB68FB;
 			productRefGroup = 63FF7151212DB1CF00CB68FB /* Products */;
@@ -167,55 +311,230 @@
 			projectRoot = "";
 			targets = (
 				63FF714F212DB1CF00CB68FB /* ToneKit */,
-				63FF7158212DB1CF00CB68FB /* ToneKitTests */,
+				63E58F0221421E3700BAE55E /* ToneKitTests */,
+				63E58EEC21421E1700BAE55E /* ToneKitExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		63FF714E212DB1CF00CB68FB /* Resources */ = {
+		63E58EEB21421E1700BAE55E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63E58EFA21421E1800BAE55E /* LaunchScreen.storyboard in Resources */,
+				63E58EF721421E1800BAE55E /* Assets.xcassets in Resources */,
+				63E58EF521421E1700BAE55E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63E58F0121421E3700BAE55E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		63FF7157212DB1CF00CB68FB /* Resources */ = {
+		63FF714E212DB1CF00CB68FB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63B58C662138F661004F9AA7 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		63B58C642138F124004F9AA7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		63E58EE921421E1700BAE55E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63E58EF221421E1700BAE55E /* ViewController.swift in Sources */,
+				63E58EF021421E1700BAE55E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63E58EFF21421E3700BAE55E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63E58F1221421E9F00BAE55E /* MTLSizeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63FF714B212DB1CF00CB68FB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		63FF7155212DB1CF00CB68FB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				63FF715F212DB1CF00CB68FB /* ToneKitTests.swift in Sources */,
+				63C28393212DBD87002AA1FF /* MTLTexture.swift in Sources */,
+				63E58EE821421DD800BAE55E /* TextureView.metal in Sources */,
+				63EE1C2D213E21780080DD59 /* UniformBufferProvider.swift in Sources */,
+				63C28385212DB6E5002AA1FF /* TextureInput.swift in Sources */,
+				63EE1C2B213E1EDC0080DD59 /* TextureView.swift in Sources */,
+				63C2838A212DB8D0002AA1FF /* ImageTexture.swift in Sources */,
+				63EE1C29213E187E0080DD59 /* MTLTextureUsage.swift in Sources */,
+				63C28387212DB726002AA1FF /* TextureOutput.swift in Sources */,
+				63C2838F212DBD42002AA1FF /* MTLSize.swift in Sources */,
+				63C28383212DB5B6002AA1FF /* MetalDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		63FF715C212DB1CF00CB68FB /* PBXTargetDependency */ = {
+		63E58F0A21421E3700BAE55E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 63FF714F212DB1CF00CB68FB /* ToneKit */;
-			targetProxy = 63FF715B212DB1CF00CB68FB /* PBXContainerItemProxy */;
+			targetProxy = 63E58F0921421E3700BAE55E /* PBXContainerItemProxy */;
+		};
+		63E58F0F21421E4700BAE55E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63E58EEC21421E1700BAE55E /* ToneKitExample */;
+			targetProxy = 63E58F0E21421E4700BAE55E /* PBXContainerItemProxy */;
+		};
+		63E58F162142204600BAE55E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63FF714F212DB1CF00CB68FB /* ToneKit */;
+			targetProxy = 63E58F152142204600BAE55E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		63E58EF321421E1700BAE55E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63E58EF421421E1700BAE55E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		63E58EF821421E1800BAE55E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63E58EF921421E1800BAE55E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		63E58EFD21421E1800BAE55E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5F9YSVH8J7;
+				INFOPLIST_FILE = ToneKitExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToneKitExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		63E58EFE21421E1800BAE55E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5F9YSVH8J7;
+				INFOPLIST_FILE = ToneKitExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToneKitExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		63E58F0C21421E3700BAE55E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5F9YSVH8J7;
+				INFOPLIST_FILE = ToneKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToneKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ToneKitTests/ToneKitTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToneKitExample.app/ToneKitExample";
+			};
+			name = Debug;
+		};
+		63E58F0D21421E3700BAE55E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5F9YSVH8J7;
+				INFOPLIST_FILE = ToneKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToneKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ToneKitTests/ToneKitTests-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToneKitExample.app/ToneKitExample";
+			};
+			name = Release;
+		};
 		63FF7162212DB1CF00CB68FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -339,7 +658,8 @@
 		63FF7165212DB1CF00CB68FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5F9YSVH8J7;
@@ -356,8 +676,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ToneKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -365,7 +687,8 @@
 		63FF7166212DB1CF00CB68FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5F9YSVH8J7;
@@ -382,44 +705,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ToneKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		63FF7168212DB1CF00CB68FB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5F9YSVH8J7;
-				INFOPLIST_FILE = ToneKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ToneKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		63FF7169212DB1CF00CB68FB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5F9YSVH8J7;
-				INFOPLIST_FILE = ToneKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ToneKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -427,6 +715,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		63E58EFC21421E1800BAE55E /* Build configuration list for PBXNativeTarget "ToneKitExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63E58EFD21421E1800BAE55E /* Debug */,
+				63E58EFE21421E1800BAE55E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63E58F0B21421E3700BAE55E /* Build configuration list for PBXNativeTarget "ToneKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63E58F0C21421E3700BAE55E /* Debug */,
+				63E58F0D21421E3700BAE55E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		63FF714A212DB1CF00CB68FB /* Build configuration list for PBXProject "ToneKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -441,15 +747,6 @@
 			buildConfigurations = (
 				63FF7165212DB1CF00CB68FB /* Debug */,
 				63FF7166212DB1CF00CB68FB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		63FF7167212DB1CF00CB68FB /* Build configuration list for PBXNativeTarget "ToneKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				63FF7168212DB1CF00CB68FB /* Debug */,
-				63FF7169212DB1CF00CB68FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
