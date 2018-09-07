@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  ToneKitExample
-//
-//  Created by DAVID HUANG on 9/6/18.
-//
-
 import UIKit
 import ToneKit
 
@@ -16,8 +9,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        texture.setTarget(textureView)
+        let passthroughLayer = ComputeLayer()
+        texture.setTarget(passthroughLayer)
+        passthroughLayer.setTarget(textureView)
         texture.processTexture()
     }
 }
-

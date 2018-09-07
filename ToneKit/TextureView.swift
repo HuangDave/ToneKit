@@ -17,11 +17,11 @@ open class TextureView: MTKView {
         float2(0.0, 1.0),
         float2(1.0, 1.0)
     ]
-    internal(set) public var vertexFunction:   MTLFunction!
+    internal(set) public var vertexFunction: MTLFunction!
     internal(set) public var fragmentFunction: MTLFunction!
     internal(set) public var renderPipeline: MTLRenderPipelineState!
-    /// Semaphore to block rendering if all 3 drawables are in use and resume when
-    /// next drawable is available again.
+    /// Semaphore to block rendering if all 3 drawables are in use and resume
+    /// when next drawable is available again.
     public let renderSemaphore: DispatchSemaphore = DispatchSemaphore(value: 3)
     /// Current texture that is rendered on the view.
     internal(set) public var texture: MTLTexture?
@@ -68,6 +68,8 @@ open class TextureView: MTKView {
         renderSemaphore.signal()
         uniforms.signalAllSemaphores()
     }
+
+    // MARK: - Rendering
 
     /// Render current texture with content mode: aspect fit.
     /// Each render pulls from a pool of 3 available drawables.
@@ -156,7 +158,7 @@ extension TextureView: TextureInput {
     /// - Parameters:
     ///     - texture:  Texture to render.
     ///     - index:    Not used
-    open func update(texture: MTLTexture, atIndex index: UInt = 0) {
+    open func update(texture: MTLTexture, at index: UInt = 0) {
         if self.texture !== texture || isDirty {
             self.texture = texture
             //autoreleasepool {

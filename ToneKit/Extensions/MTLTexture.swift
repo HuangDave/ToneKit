@@ -3,7 +3,6 @@ import Metal.MTLTexture
 public extension MTLTexture {
     /// - Returns: Returns the texture as a UIImage.
     public func uiImage() -> UIImage {
-
         let imageByteCount = width * height * 4
         let imageBytes = malloc(imageByteCount)
         let bytesPerRow = width * 4

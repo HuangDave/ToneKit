@@ -1,5 +1,4 @@
 import Metal
-
 /// TextureInput is adopted by objects that receive a MTLTexture for rendering or processing.
 public protocol TextureInput: AnyObject {
     // Array containing all input textures that are used by the TextureInput.
@@ -10,11 +9,11 @@ public protocol TextureInput: AnyObject {
 
     func willReceiveTextureUpdate()
     func textureUpdateCancelled()
-    /// Called when a texture is updated, deal with incoming texture.
+    /// The TextureInput should handle the received texture when a new texture is received.
     ///
     /// - Parameters:
-    ///     - texture: Texture to render or process.
+    ///     - texture: New texture.
     ///     - index:   Index of the texture to update
-    func update(texture: MTLTexture, atIndex index: UInt)
+    func update(texture: MTLTexture, at index: UInt)
     func processTexture()
 }

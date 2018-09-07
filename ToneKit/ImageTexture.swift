@@ -1,5 +1,5 @@
-import UIKit.UIImage
 import MetalKit.MTKTextureLoader
+import UIKit.UIImage
 /// Image source used for image processing.
 /// On initialization, the specified UIImage is loaded as a MTLTexture.
 open class ImageTexture: TextureOutput {
@@ -10,7 +10,7 @@ open class ImageTexture: TextureOutput {
         MTKTextureLoader.Option.allocateMipmaps: true,
         MTKTextureLoader.Option.SRGB:            false,
         MTKTextureLoader.Option.origin:          MTKTextureLoader.Origin.flippedVertically,
-        MTKTextureLoader.Option.textureUsage:    MTLTextureUsage.shaderReadWrite
+        MTKTextureLoader.Option.textureUsage:    MTLTextureUsage.shaderReadWrite.rawValue
     ] as [MTKTextureLoader.Option: Any]
 
     public var width:  Int = 0
@@ -32,7 +32,6 @@ open class ImageTexture: TextureOutput {
 
         let rawData = calloc(width * height * 4, MemoryLayout<UInt8>.size)
         defer { free(rawData) }
-
         // setup bitmap context for getting the image as a texture
         let colorSpaceRef    = CGColorSpaceCreateDeviceRGB()
         let bytesPerPixel    = 4
@@ -67,9 +66,9 @@ open class ImageTexture: TextureOutput {
     ///
     /// - Parameters:
     ///     - image:   Image to load.
-    ///     - options: Options for loading texture.
+    ///     - options: MTLTextureLoader options.
     @available(iOS 10.0, *)
-    public init(image: UIImage, options: [MTKTextureLoader.Option: Any] = ImageTexture.defaultOptions) {
+    public init(image: UIImage, options: [MTKTextureLoader.Option: Any]) {
         super.init()
         guard let data = ImageTexture.fixOrientation(forImage: image).pngData() else {
             fatalError("Unable to load PNG Representation of UIImage")
@@ -83,11 +82,11 @@ open class ImageTexture: TextureOutput {
         width = texture!.width
         height = texture!.height
     }
-    /// Notify targets to begin processing the texture.
+    /// Notifies the texture's target to update/process the texture.
     open override func processTexture() {
         notifyTargetForTextureUpdate()
         MetalDevice.shared.processingQueue.async {
-            self.target?.update(texture: self.texture!, atIndex: self.targetIndex)
+            self.target?.update(texture: self.texture!, at: self.targetIndex)
         }
     }
 }
@@ -99,7 +98,7 @@ extension ImageTexture {
     /// - Parameters:
     ///     - image: Image to fix.
     ///
-    /// - Returns:   Returns UIImage with adjusted orientation.
+    /// - Returns:   UIImage with adjusted orientation.
     public class func fixOrientation(forImage image: UIImage) -> UIImage {
         // no adjustments needed...
         guard image.imageOrientation != .up else { return image }

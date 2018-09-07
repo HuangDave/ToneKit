@@ -1,6 +1,5 @@
-import UIKit.UIImage
 import Metal
-
+import UIKit.UIImage
 /// A TextureOutput object process a texture and outputs it to a TextureInput.
 open class TextureOutput {
     public let textureUpdateSemaphore: DispatchSemaphore = DispatchSemaphore(value: 0)
@@ -39,8 +38,7 @@ open class TextureOutput {
     /// being processsed, the TextureOutput will wait for _textureUpdateSemaphore_ to
     /// be signaled before creating the UIImage.
     ///
-    /// - Returns: Returns the current processed texture as a UIImage.
-    ///            Returns nil if the there is no processed texture.
+    /// - Returns: The current processed texture as a UIImage.
     open func imageOutput() -> UIImage? {
         if isProcessing { textureUpdateSemaphore.wait() }
         guard let texture = self.texture else {

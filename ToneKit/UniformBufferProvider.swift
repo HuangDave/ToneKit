@@ -1,6 +1,6 @@
-import simd
 import Dispatch
 import Metal.MTLBuffer
+import simd
 
 public protocol Buffer {
     var bufferCount: Int { get }
@@ -21,6 +21,14 @@ open class UniformBufferProvider {
         buffers.forEach { (_, buffer) in
             buffer?.semaphore.signal()
         }
+    }
+
+    func registerUniform<UniformType>(uniform: UniformBuffer<UniformType>,
+                                      identifier: String,
+                                      count: Int = UniformBuffer<Any>.defaultBufferCount,
+                                      size: Int = UniformBuffer<Any>.defaultBufferSize) {
+        buffers[identifier] = UniformBuffer<UniformType>(bufferCount: count,
+                                                         sizeOfBuffer: size)
     }
 }
 
@@ -53,7 +61,9 @@ extension UniformBufferProvider {
 open class UniformBuffer<UniformType>: Buffer {
     public static var defaultBufferCount: Int { return 3 }
     public static var defaultBufferSize:  Int { return 1 }
+    /// Total number of allocated buffers.
     public let bufferCount: Int
+    /// Total size of each buffer.
     public let bufferSize: Int
     /// Array consiting of a pool of uniform MTLBuffers.
     internal(set) public var buffers: [MTLBuffer] = [MTLBuffer]()

@@ -1,7 +1,6 @@
-import Metal
 import Dispatch
+import Metal
 
-/// Metal device singleton for image processing.
 public final class MetalDevice {
     public static let shared: MetalDevice = MetalDevice()
 

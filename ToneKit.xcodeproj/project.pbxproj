@@ -14,6 +14,8 @@
 		63C2838A212DB8D0002AA1FF /* ImageTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28389212DB8D0002AA1FF /* ImageTexture.swift */; };
 		63C2838F212DBD42002AA1FF /* MTLSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C2838E212DBD42002AA1FF /* MTLSize.swift */; };
 		63C28393212DBD87002AA1FF /* MTLTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28392212DBD87002AA1FF /* MTLTexture.swift */; };
+		63DC67D62142FC05005D7868 /* ComputeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DC67D52142FC05005D7868 /* ComputeLayer.swift */; };
+		63DC67D921430A17005D7868 /* Passthrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63DC67D821430A17005D7868 /* Passthrough.metal */; };
 		63E58EE821421DD800BAE55E /* TextureView.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63E58EE721421DD800BAE55E /* TextureView.metal */; };
 		63E58EF021421E1700BAE55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E58EEF21421E1700BAE55E /* AppDelegate.swift */; };
 		63E58EF221421E1700BAE55E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E58EF121421E1700BAE55E /* ViewController.swift */; };
@@ -76,6 +78,8 @@
 		63C28389212DB8D0002AA1FF /* ImageTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTexture.swift; sourceTree = "<group>"; };
 		63C2838E212DBD42002AA1FF /* MTLSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLSize.swift; sourceTree = "<group>"; };
 		63C28392212DBD87002AA1FF /* MTLTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLTexture.swift; sourceTree = "<group>"; };
+		63DC67D52142FC05005D7868 /* ComputeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeLayer.swift; sourceTree = "<group>"; };
+		63DC67D821430A17005D7868 /* Passthrough.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Passthrough.metal; sourceTree = "<group>"; };
 		63E58EE721421DD800BAE55E /* TextureView.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TextureView.metal; sourceTree = "<group>"; };
 		63E58EED21421E1700BAE55E /* ToneKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E58EEF21421E1700BAE55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 		63E58EE621421DB400BAE55E /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				63DC67D821430A17005D7868 /* Passthrough.metal */,
 				63E58EE721421DD800BAE55E /* TextureView.metal */,
 			);
 			path = Shaders;
@@ -191,6 +196,7 @@
 				63FF7154212DB1CF00CB68FB /* Info.plist */,
 				63FF7153212DB1CF00CB68FB /* ToneKit.h */,
 				63C2838D212DBD2F002AA1FF /* Extensions */,
+				63DC67D52142FC05005D7868 /* ComputeLayer.swift */,
 				63C28389212DB8D0002AA1FF /* ImageTexture.swift */,
 				63C28382212DB5B6002AA1FF /* MetalDevice.swift */,
 				63C28384212DB6E5002AA1FF /* TextureInput.swift */,
@@ -392,6 +398,8 @@
 				63EE1C29213E187E0080DD59 /* MTLTextureUsage.swift in Sources */,
 				63C28387212DB726002AA1FF /* TextureOutput.swift in Sources */,
 				63C2838F212DBD42002AA1FF /* MTLSize.swift in Sources */,
+				63DC67D62142FC05005D7868 /* ComputeLayer.swift in Sources */,
+				63DC67D921430A17005D7868 /* Passthrough.metal in Sources */,
 				63C28383212DB5B6002AA1FF /* MetalDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
