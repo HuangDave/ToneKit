@@ -17,7 +17,7 @@ open class ComputeLayer: TextureOutput {
     public var threadgroupCount: MTLSize {
         return MTLSize(width: 16, height: 16, depth: 1)
     }
-    /// Calculates the threadgroup size for processing.
+    /// Calculate the threadgroup size for processing.
     ///
     /// The threadgroup size is obtained by dividing the output texture's size with the specified
     /// threadgroupCount size.
@@ -28,8 +28,8 @@ open class ComputeLayer: TextureOutput {
     /// - Note: The quotient is rounded up to prevent a black/white border
     ///         when rendering the texture since compute functions on take integers position.
     public var threadgroups: MTLSize {
-        return MTLSize(width:  outputSize.width / threadgroupCount.width,
-                       height: outputSize.height / threadgroupCount.height,
+        return MTLSize(width:  Int(ceilf(Float(outputSize.width)  / Float(threadgroupCount.width))),
+                       height: Int(ceilf(Float(outputSize.height) / Float(threadgroupCount.height))),
                        depth:  1)
     }
 
@@ -62,7 +62,7 @@ open class ComputeLayer: TextureOutput {
     /// Creates an output texture for writing the output of the processed texture if necessary.
     open func generateOutputTextureIfNeeded() {
         if texture == nil ||
-            texture?.width != outputSize.width ||
+            texture?.width  != outputSize.width ||
             texture?.height != outputSize.height {
             let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm,
                                                                              width: outputSize.width,
@@ -151,7 +151,7 @@ extension ComputeLayer: TextureInput {
         uniforms?.signalAllSemaphores()
         computeSemaphore.signal()
         isProcessing = false
-        target?.textureUpdateCancelled()
+        notifyTargetTextureUpdateCancelled()
     }
     /// Called when adjustment layer receives a new texture. The layer will process the new layer if
     /// needed and send the new texture to its target.
