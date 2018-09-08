@@ -28,7 +28,7 @@ open class TextureOutput {
     /// - Parameters:
     ///     - target:   Target to output texture to.
     ///     - index:    Target index, defaults to 0.
-    open func setTarget(_ target: TextureInput, atIndex index: UInt = 0) {
+    open func setTarget(_ target: TextureInput, at index: UInt = 0) {
         self.target = target
         targetIndex = index
     }
