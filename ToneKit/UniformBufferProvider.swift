@@ -8,6 +8,7 @@ public protocol Buffer {
     var semaphore:   DispatchSemaphore { get }
 }
 
+@dynamicMemberLookup
 open class UniformBufferProvider {
     internal(set) public var buffers: [String: Buffer?] = [:]
 
@@ -22,39 +23,31 @@ open class UniformBufferProvider {
             buffer?.semaphore.signal()
         }
     }
-
-    func registerUniform<UniformType>(uniform: UniformBuffer<UniformType>,
-                                      identifier: String,
-                                      count: Int = UniformBuffer<Any>.defaultBufferCount,
-                                      size: Int = UniformBuffer<Any>.defaultBufferSize) {
-        buffers[identifier] = UniformBuffer<UniformType>(bufferCount: count,
-                                                         sizeOfBuffer: size)
-    }
 }
 
 // MARK: - UniformBufferProvider Public Accessors
 extension UniformBufferProvider {
-    public subscript(identifier: String) -> Buffer {
-        get { return buffers[identifier]!! as Buffer }
-        set { buffers[identifier] = newValue }
+    public subscript <UniformType: Buffer> (dynamicMember member: String) -> UniformType? {
+        get { return buffers[member, default: nil] as? UniformType }
+        set { buffers[member] = newValue                           }
     }
-    public subscript(identifier: String) -> UniformBuffer<Float>? {
-        return buffers[identifier] as? UniformBuffer<Float>
+    public subscript(dynamicMember member: String) -> UniformBuffer<Float>? {
+        return buffers[member, default: nil] as? UniformBuffer<Float>
     }
-    public subscript(identifier: String) -> UniformBuffer<Int>? {
-        return buffers[identifier] as? UniformBuffer<Int>
+    public subscript(dynamicMember member: String) -> UniformBuffer<Int>? {
+        return buffers[member, default: nil] as? UniformBuffer<Int>
     }
-    public subscript(identifier: String) -> UniformBuffer<float4x4>? {
-        return buffers[identifier] as? UniformBuffer<float4x4>
+    public subscript(dynamicMember member: String) -> UniformBuffer<float4x4>? {
+        return buffers[member, default: nil] as? UniformBuffer<float4x4>
     }
-    public subscript(identifier: String) -> UniformBuffer<float4>? {
-        return buffers[identifier] as? UniformBuffer<float4>
+    public subscript(dynamicMember member: String) -> UniformBuffer<float4>? {
+        return buffers[member, default: nil] as? UniformBuffer<float4>
     }
-    public subscript(identifier: String) -> UniformBuffer<float3>? {
-        return buffers[identifier] as? UniformBuffer<float3>
+    public subscript(dynamicMember member: String) -> UniformBuffer<float3>? {
+        return buffers[member, default: nil] as? UniformBuffer<float3>
     }
-    public subscript(identifier: String) -> UniformBuffer<float2>? {
-        return buffers[identifier] as? UniformBuffer<float2>
+    public subscript(dynamicMember member: String) -> UniformBuffer<float2>? {
+        return buffers[member, default: nil] as? UniformBuffer<float2>
     }
 }
 
@@ -87,7 +80,6 @@ open class UniformBuffer<UniformType>: Buffer {
             buffers.append(device.makeBuffer(length: self.bufferSize,
                                              options: MTLResourceOptions())!)
         }
-        semaphore.signal()
     }
 
     deinit {

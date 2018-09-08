@@ -60,8 +60,8 @@ open class TextureView: MTKView {
         }
         let textureCoordinateBufferSize = quadVertices.count * MemoryLayout<float4>.size
         let vertexBufferSize            = textureCoordinates.count * MemoryLayout<float2>.size
-        uniforms["texture_coordinates"] = UniformBuffer<float4>(sizeOfBuffer: textureCoordinateBufferSize)
-        uniforms["vertex"]              = UniformBuffer<float2>(sizeOfBuffer: vertexBufferSize)
+        uniforms.textureCoordinates     = UniformBuffer<float4>(sizeOfBuffer: textureCoordinateBufferSize)
+        uniforms.vertex                 = UniformBuffer<float2>(sizeOfBuffer: vertexBufferSize)
     }
 
     deinit {
@@ -80,11 +80,11 @@ open class TextureView: MTKView {
 
         autoAdjustRenderFrame()
 
-        guard let textureCoordinateBuffer = uniforms["texture_coordinates"]?
+        guard let textureCoordinateBuffer = uniforms.textureCoordinates?
             .nextAvailableBuffer(withContents: &quadVertices) else {
-                fatalError("Error getting MTLBuffer for texture_coordinates uniform")
+                fatalError("Error getting MTLBuffer for textureCoordinates uniform")
         }
-        guard let vertexBuffer = uniforms["vertex"]?
+        guard let vertexBuffer = uniforms.vertex?
             .nextAvailableBuffer(withContents: &textureCoordinates) else {
                 fatalError("Error getting MTLBuffer for vertex uniform")
         }
