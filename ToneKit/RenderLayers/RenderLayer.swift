@@ -31,7 +31,7 @@ extension RenderLayer where Self: ComputeLayer {
             // TODO: need to refactor this
             isProcessing = true
             computeSemaphore.wait()
-            uniforms?.waitForAllSemaphores()
+            uniforms.waitForAllSemaphores()
             generateOutputTextureIfNeeded()
 
             let commandBuffer = MetalDevice.shared.commandQueue.makeCommandBuffer()
@@ -44,7 +44,7 @@ extension RenderLayer where Self: ComputeLayer {
             commandBuffer?.commit()
             commandBuffer?.waitUntilCompleted()
 
-            uniforms?.signalAllSemaphores()
+            uniforms.signalAllSemaphores()
             computeSemaphore.signal()
             isProcessing = false
             isDirty = false

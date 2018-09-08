@@ -12,7 +12,7 @@ open class ComputeLayer: TextureOutput {
     internal(set) public var computeSemaphore: DispatchSemaphore!
     internal(set) public var outputSize: MTLSize = MTLSize.zero
     /// Should be initialized if the layer requires any uniforms during processing.
-    internal(set) public var uniforms: UniformBufferProvider?
+    internal(set) public lazy var uniforms: UniformBufferProvider = UniformBufferProvider()
     /// Default threadgroup count of MTLSize(16, 16, 1)
     public var threadgroupCount: MTLSize {
         return MTLSize(width: 16, height: 16, depth: 1)
@@ -53,7 +53,7 @@ open class ComputeLayer: TextureOutput {
     }
 
     deinit {
-        uniforms?.signalAllSemaphores()
+        uniforms.signalAllSemaphores()
         computeSemaphore.signal()
     }
 
@@ -84,7 +84,7 @@ open class ComputeLayer: TextureOutput {
             fatalError("\(type(of: self)) - Input texture(s) is not set or is nil")
         }
         computeSemaphore.wait()
-        uniforms?.waitForAllSemaphores()
+        uniforms.waitForAllSemaphores()
         generateOutputTextureIfNeeded()
     }
     /// Encodes the desired MTLTextures on the command encoder.
@@ -127,7 +127,7 @@ open class ComputeLayer: TextureOutput {
     /// Called when processing is finished.
     /// Override to perform any other post-processing tasks.
     open func processingDidFinish() {
-        uniforms?.signalAllSemaphores()
+        uniforms.signalAllSemaphores()
         computeSemaphore.signal()
         isProcessing = false
         isDirty = false
@@ -148,7 +148,7 @@ extension ComputeLayer: TextureInput {
     }
 
     public final func textureUpdateCancelled() {
-        uniforms?.signalAllSemaphores()
+        uniforms.signalAllSemaphores()
         computeSemaphore.signal()
         isProcessing = false
         notifyTargetTextureUpdateCancelled()
