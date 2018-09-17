@@ -79,9 +79,11 @@ open class ComputeLayer: TextureOutput {
     /// - Returns: True if all checks pass or if all pre-processing tasks are completed,
     ///             otherwise return false and image processing is terminated.
     open func processingWillBegin() {
-        guard inputTexture != nil else {
-            textureUpdateCancelled()
-            fatalError("\(type(of: self)) - Input texture(s) is not set or is nil")
+        if inputCount != 0 {
+            guard inputTexture != nil else {
+                textureUpdateCancelled()
+                fatalError("Expecting an input but input texture is not set or is nil")
+            }
         }
         computeSemaphore.wait()
         uniforms.waitForAllSemaphores()
