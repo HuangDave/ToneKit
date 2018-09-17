@@ -12,7 +12,7 @@ open class SolidColorLayer: ComputeLayer, RenderLayer {
         uniforms.color = UniformBuffer<float4>(sizeOfBuffer: MemoryLayout<float4>.size)
     }
 
-    open override func configureUniforms(for commandEncoder: MTLComputeCommandEncoder?) {
+    open override func encodeUniforms(for commandEncoder: MTLComputeCommandEncoder?) {
         // get rgb components of UIColor and set into float4 a uniform for encoding...
         var red:   CGFloat = 0.0
         var green: CGFloat = 0.0

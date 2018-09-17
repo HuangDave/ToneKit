@@ -140,7 +140,6 @@
 		631C16012143839700C710D5 /* RenderLayers */ = {
 			isa = PBXGroup;
 			children = (
-				636E6F5221434074006E59E0 /* RenderLayer.swift */,
 				631C1602214383BD00C710D5 /* SolidColorLayer.swift */,
 			);
 			path = RenderLayers;
@@ -162,6 +161,15 @@
 				63EE1C28213E187E0080DD59 /* MTLTextureUsage.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		63CE8591214FCE6B00A963FF /* BaseLayers */ = {
+			isa = PBXGroup;
+			children = (
+				63DC67D52142FC05005D7868 /* ComputeLayer.swift */,
+				636E6F5221434074006E59E0 /* RenderLayer.swift */,
+			);
+			path = BaseLayers;
 			sourceTree = "<group>";
 		};
 		63E58EE621421DB400BAE55E /* Shaders */ = {
@@ -224,15 +232,15 @@
 			children = (
 				63FF7154212DB1CF00CB68FB /* Info.plist */,
 				63FF7153212DB1CF00CB68FB /* ToneKit.h */,
-				63DC67D52142FC05005D7868 /* ComputeLayer.swift */,
 				63C28389212DB8D0002AA1FF /* ImageTexture.swift */,
 				63C28382212DB5B6002AA1FF /* MetalDevice.swift */,
 				63C28384212DB6E5002AA1FF /* TextureInput.swift */,
 				63C28386212DB726002AA1FF /* TextureOutput.swift */,
 				63EE1C2A213E1EDC0080DD59 /* TextureView.swift */,
 				63EE1C2C213E21780080DD59 /* UniformBufferProvider.swift */,
-				631C16082143968B00C710D5 /* AdjustmentLayers */,
 				63C2838D212DBD2F002AA1FF /* Extensions */,
+				63CE8591214FCE6B00A963FF /* BaseLayers */,
+				631C16082143968B00C710D5 /* AdjustmentLayers */,
 				631C16012143839700C710D5 /* RenderLayers */,
 				63E58EE621421DB400BAE55E /* Shaders */,
 			);
