@@ -95,10 +95,14 @@ open class ComputeLayer: TextureOutput {
     ///
     /// - Parameters:
     ///    - commandEncoder: The MTLComputeCommandEcoder used for processing.
-    open func configureTextures(for commandEncoder: MTLComputeCommandEncoder?) {
-        for i in 0..<inputCount {
-            commandEncoder?.setTexture(inputTextures[i], index: i)
+    open func encodeTextures(for commandEncoder: MTLComputeCommandEncoder?) {
+        if inputCount != 0 {
+            // encode input textures if the layer requires input textures for processing...
+            for i in 0..<inputCount {
+                commandEncoder?.setTexture(inputTextures[i], index: i)
+            }
         }
+        // if inputCount = 0, then the output texture will be encoded at index 0
         commandEncoder?.setTexture(texture, index: inputCount)
     }
     /// Encodes MTLBuffers containing desired uniforms on the command encoder.
@@ -107,7 +111,7 @@ open class ComputeLayer: TextureOutput {
     ///
     /// - Parameters:
     ///    - commandEncoder: The MTLComputeCommandEcoder used for processing.
-    open func configureUniforms(for commandEncoder: MTLComputeCommandEncoder?) {
+    open func encodeUniforms(for commandEncoder: MTLComputeCommandEncoder?) {
 
     }
 
@@ -117,8 +121,8 @@ open class ComputeLayer: TextureOutput {
         let commandBuffer = MetalDevice.shared.commandQueue.makeCommandBuffer()
         let commandEncoder = commandBuffer?.makeComputeCommandEncoder()
         commandEncoder?.setComputePipelineState(computePipeline)
-        configureTextures(for: commandEncoder)
-        configureUniforms(for: commandEncoder)
+        encodeTextures(for: commandEncoder)
+        encodeUniforms(for: commandEncoder)
         commandEncoder?.dispatchThreadgroups(threadgroups, threadsPerThreadgroup: threadgroupCount)
         commandEncoder?.endEncoding()
         commandBuffer?.commit()

@@ -9,7 +9,7 @@ open class BrightnessLayer: ComputeLayer {
         uniforms.brightness = UniformBuffer<Float>()
     }
 
-    open override func configureUniforms(for commandEncoder: MTLComputeCommandEncoder?) {
+    open override func encodeUniforms(for commandEncoder: MTLComputeCommandEncoder?) {
         guard let buffer = uniforms.brightness?
             .nextAvailableBuffer(withContents: &brightness) else {
                 fatalError("Error getting MTLBuffer for brightness uniform")

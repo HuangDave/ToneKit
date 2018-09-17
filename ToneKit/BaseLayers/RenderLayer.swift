@@ -11,9 +11,6 @@ extension RenderLayer where Self: ComputeLayer {
         get { return nil }
         set { }
     }
-
-    @available(*, unavailable, message:"Should use renderTexture() to genereate output texture.")
-    public func processTexture() { }
 }
 
 extension RenderLayer where Self: ComputeLayer {
@@ -28,20 +25,8 @@ extension RenderLayer where Self: ComputeLayer {
     /// Renders a texture and outputs it to the configured TextureInput target.
     public func renderTexture() {
         if isDirty {
-            processingWillBegin()
             isProcessing = true
-
-            let commandBuffer = MetalDevice.shared.commandQueue.makeCommandBuffer()
-            let commandEncoder = commandBuffer?.makeComputeCommandEncoder()
-            commandEncoder?.setComputePipelineState(computePipeline)
-            commandEncoder?.setTexture(texture, index: 0)
-            configureUniforms(for: commandEncoder)
-            commandEncoder?.dispatchThreadgroups(threadgroups, threadsPerThreadgroup: threadgroupCount)
-            commandEncoder?.endEncoding()
-            commandBuffer?.commit()
-            commandBuffer?.waitUntilCompleted()
-
-            processingDidFinish()
+            processTexture()
         }
         target?.update(texture: texture!, at: targetIndex)
     }
