@@ -28,11 +28,8 @@ extension RenderLayer where Self: ComputeLayer {
     /// Renders a texture and outputs it to the configured TextureInput target.
     public func renderTexture() {
         if isDirty {
-            // TODO: need to refactor this
+            processingWillBegin()
             isProcessing = true
-            computeSemaphore.wait()
-            uniforms.waitForAllSemaphores()
-            generateOutputTextureIfNeeded()
 
             let commandBuffer = MetalDevice.shared.commandQueue.makeCommandBuffer()
             let commandEncoder = commandBuffer?.makeComputeCommandEncoder()
@@ -44,11 +41,7 @@ extension RenderLayer where Self: ComputeLayer {
             commandBuffer?.commit()
             commandBuffer?.waitUntilCompleted()
 
-            uniforms.signalAllSemaphores()
-            computeSemaphore.signal()
-            isProcessing = false
-            isDirty = false
-            textureUpdateSemaphore.signal()
+            processingDidFinish()
         }
         target?.update(texture: texture!, at: targetIndex)
     }
