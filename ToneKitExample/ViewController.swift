@@ -9,7 +9,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        testBrightnessLayer()
+        testLookupLayer()
     }
 
     func testPassThrough() {
@@ -26,6 +26,13 @@ class ViewController: UIViewController {
         brightnessLayer.brightness = -0.3
         texture.setTarget(brightnessLayer)
         brightnessLayer.setTarget(textureView)
+        texture.processTexture()
+    }
+
+    func testLookupLayer() {
+        let lookupLayer = LookupLayer(lookupImage: "sample_lookup.png")
+        texture.setTarget(lookupLayer)
+        lookupLayer.setTarget(textureView)
         texture.processTexture()
     }
 
