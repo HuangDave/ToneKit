@@ -11,6 +11,8 @@
 		631C1605214386E600C710D5 /* SolidColor.metal in Sources */ = {isa = PBXBuildFile; fileRef = 631C1604214386E600C710D5 /* SolidColor.metal */; };
 		631C1607214395F200C710D5 /* Brightness.metal in Sources */ = {isa = PBXBuildFile; fileRef = 631C1606214395F200C710D5 /* Brightness.metal */; };
 		631C160A2143969E00C710D5 /* BrightnessLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631C16092143969E00C710D5 /* BrightnessLayer.swift */; };
+		636A6C2E216F11E500A78D85 /* LookupLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636A6C2D216F11E500A78D85 /* LookupLayer.swift */; };
+		636A6C30216F1FEB00A78D85 /* Lookup.metal in Sources */ = {isa = PBXBuildFile; fileRef = 636A6C2F216F1FEB00A78D85 /* Lookup.metal */; };
 		636E6F5321434074006E59E0 /* RenderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E6F5221434074006E59E0 /* RenderLayer.swift */; };
 		63B58C662138F661004F9AA7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 63B58C652138F661004F9AA7 /* .swiftlint.yml */; };
 		63C28383212DB5B6002AA1FF /* MetalDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28382212DB5B6002AA1FF /* MetalDevice.swift */; };
@@ -80,6 +82,8 @@
 		631C1604214386E600C710D5 /* SolidColor.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SolidColor.metal; sourceTree = "<group>"; };
 		631C1606214395F200C710D5 /* Brightness.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Brightness.metal; sourceTree = "<group>"; };
 		631C16092143969E00C710D5 /* BrightnessLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessLayer.swift; sourceTree = "<group>"; };
+		636A6C2D216F11E500A78D85 /* LookupLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupLayer.swift; sourceTree = "<group>"; };
+		636A6C2F216F1FEB00A78D85 /* Lookup.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Lookup.metal; sourceTree = "<group>"; };
 		636E6F5221434074006E59E0 /* RenderLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderLayer.swift; sourceTree = "<group>"; };
 		63B58C652138F661004F9AA7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		63C28382212DB5B6002AA1FF /* MetalDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalDevice.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				631C16092143969E00C710D5 /* BrightnessLayer.swift */,
+				636A6C2D216F11E500A78D85 /* LookupLayer.swift */,
 			);
 			path = AdjustmentLayers;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				631C1606214395F200C710D5 /* Brightness.metal */,
+				636A6C2F216F1FEB00A78D85 /* Lookup.metal */,
 				63DC67D821430A17005D7868 /* Passthrough.metal */,
 				631C1604214386E600C710D5 /* SolidColor.metal */,
 				63E58EE721421DD800BAE55E /* TextureView.metal */,
@@ -435,9 +441,11 @@
 				63EE1C2B213E1EDC0080DD59 /* TextureView.swift in Sources */,
 				63C2838A212DB8D0002AA1FF /* ImageTexture.swift in Sources */,
 				631C160A2143969E00C710D5 /* BrightnessLayer.swift in Sources */,
+				636A6C2E216F11E500A78D85 /* LookupLayer.swift in Sources */,
 				63EE1C29213E187E0080DD59 /* MTLTextureUsage.swift in Sources */,
 				63C28387212DB726002AA1FF /* TextureOutput.swift in Sources */,
 				63C2838F212DBD42002AA1FF /* MTLSize.swift in Sources */,
+				636A6C30216F1FEB00A78D85 /* Lookup.metal in Sources */,
 				631C1603214383BD00C710D5 /* SolidColorLayer.swift in Sources */,
 				631C1607214395F200C710D5 /* Brightness.metal in Sources */,
 				63DC67D62142FC05005D7868 /* ComputeLayer.swift in Sources */,
@@ -720,7 +728,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ToneKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -749,7 +757,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ToneKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
