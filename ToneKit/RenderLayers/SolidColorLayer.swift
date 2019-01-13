@@ -2,12 +2,11 @@ import Metal
 import simd
 
 open class SolidColorLayer: ComputeLayer, RenderLayer {
-
     /// Color to render.
     public var color: UIColor = .black
 
     public init(color: UIColor = .black) {
-        super.init(functionName: "compute_solid_color")
+        super.init(functionName: "compute_solid_color", inputCount: 0)
         self.color = color
         uniforms.color = UniformBuffer<float4>(sizeOfBuffer: MemoryLayout<float4>.size)
     }

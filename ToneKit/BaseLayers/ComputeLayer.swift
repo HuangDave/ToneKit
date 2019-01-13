@@ -4,7 +4,7 @@ import Metal
 open class ComputeLayer: TextureOutput {
     /// The number of accepted texture inputs. The default count = 1 and should be overridden is
     /// different input count is desired.
-    open var inputCount: Int { return 1 }
+    internal(set) public var inputCount: Int!
     /// Array containing all input textures that are used for processing.
     /// The size allocated for the array is based on the specified inputCount.
     internal(set) public var inputTextures: [MTLTexture?]!
@@ -39,7 +39,7 @@ open class ComputeLayer: TextureOutput {
     ///
     /// - Parameters:
     ///    - functionName: Name of the kernel compute function.
-    public init(functionName: String = "compute_passthrough") {
+    public init(functionName: String = "compute_passthrough", inputCount: Int = 1) {
         super.init()
         let computeFunction = MetalDevice.shared.makeFunction(name: functionName)
         do {
@@ -48,7 +48,8 @@ open class ComputeLayer: TextureOutput {
             fatalError("Error occurred when building compute pipeline for function: \(computeFunction)")
         }
         computeSemaphore = DispatchSemaphore(value: 3)
-        inputTextures = [MTLTexture?](repeating: nil, count: inputCount)
+        self.inputCount = inputCount
+        inputTextures = [MTLTexture?](repeating: nil, count: self.inputCount)
         isDirty = true
     }
 
