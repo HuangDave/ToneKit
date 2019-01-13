@@ -9,7 +9,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        testLookupLayer()
+        testSolidColorLayer()
     }
 
     func testPassThrough() {
@@ -40,9 +40,7 @@ class ViewController: UIViewController {
 
     func testSolidColorLayer() {
         let solidColorLayer = SolidColorLayer()
-        solidColorLayer.setOutputSize(size: MTLSize(width: 375,
-                                                    height: 375,
-                                                    depth: 1))
+        solidColorLayer.setOutputSize(size: MTLSize(width: 375, height: 375, depth: 1))
         solidColorLayer.color = UIColor.blue
         solidColorLayer.setTarget(textureView)
         solidColorLayer.renderTexture()

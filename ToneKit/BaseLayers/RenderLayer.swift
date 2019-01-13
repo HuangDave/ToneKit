@@ -14,8 +14,6 @@ extension RenderLayer where Self: ComputeLayer {
 }
 
 extension RenderLayer where Self: ComputeLayer {
-    public var inputCount: Int { return 0 }
-
     public func willReceiveTextureUpdate() { }
 
     public func setOutputSize(size: MTLSize) {
