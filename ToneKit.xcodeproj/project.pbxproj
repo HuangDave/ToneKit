@@ -15,6 +15,9 @@
 		636A6C30216F1FEB00A78D85 /* Lookup.metal in Sources */ = {isa = PBXBuildFile; fileRef = 636A6C2F216F1FEB00A78D85 /* Lookup.metal */; };
 		636E6F5321434074006E59E0 /* RenderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E6F5221434074006E59E0 /* RenderLayer.swift */; };
 		63B58C662138F661004F9AA7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 63B58C652138F661004F9AA7 /* .swiftlint.yml */; };
+		63BEE65F21ED96F600C2CECF /* WhiteBalanceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BEE65E21ED96F600C2CECF /* WhiteBalanceLayer.swift */; };
+		63BEE66121ED983500C2CECF /* WhiteBalance.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63BEE66021ED983500C2CECF /* WhiteBalance.metal */; };
+		63BEE66421EDAC4900C2CECF /* yiq.h in Headers */ = {isa = PBXBuildFile; fileRef = 63BEE66221EDAC4900C2CECF /* yiq.h */; };
 		63C28383212DB5B6002AA1FF /* MetalDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28382212DB5B6002AA1FF /* MetalDevice.swift */; };
 		63C28385212DB6E5002AA1FF /* TextureInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28384212DB6E5002AA1FF /* TextureInput.swift */; };
 		63C28387212DB726002AA1FF /* TextureOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28386212DB726002AA1FF /* TextureOutput.swift */; };
@@ -86,6 +89,9 @@
 		636A6C2F216F1FEB00A78D85 /* Lookup.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Lookup.metal; sourceTree = "<group>"; };
 		636E6F5221434074006E59E0 /* RenderLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderLayer.swift; sourceTree = "<group>"; };
 		63B58C652138F661004F9AA7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		63BEE65E21ED96F600C2CECF /* WhiteBalanceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteBalanceLayer.swift; sourceTree = "<group>"; };
+		63BEE66021ED983500C2CECF /* WhiteBalance.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = WhiteBalance.metal; sourceTree = "<group>"; };
+		63BEE66221EDAC4900C2CECF /* yiq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = yiq.h; sourceTree = "<group>"; };
 		63C28382212DB5B6002AA1FF /* MetalDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalDevice.swift; sourceTree = "<group>"; };
 		63C28384212DB6E5002AA1FF /* TextureInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureInput.swift; sourceTree = "<group>"; };
 		63C28386212DB726002AA1FF /* TextureOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureOutput.swift; sourceTree = "<group>"; };
@@ -154,8 +160,17 @@
 			children = (
 				631C16092143969E00C710D5 /* BrightnessLayer.swift */,
 				636A6C2D216F11E500A78D85 /* LookupLayer.swift */,
+				63BEE65E21ED96F600C2CECF /* WhiteBalanceLayer.swift */,
 			);
 			path = AdjustmentLayers;
+			sourceTree = "<group>";
+		};
+		63BEE66621EDDF1D00C2CECF /* ColorSpaces */ = {
+			isa = PBXGroup;
+			children = (
+				63BEE66221EDAC4900C2CECF /* yiq.h */,
+			);
+			path = ColorSpaces;
 			sourceTree = "<group>";
 		};
 		63C2838D212DBD2F002AA1FF /* Extensions */ = {
@@ -180,11 +195,13 @@
 		63E58EE621421DB400BAE55E /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				63BEE66621EDDF1D00C2CECF /* ColorSpaces */,
 				631C1606214395F200C710D5 /* Brightness.metal */,
 				636A6C2F216F1FEB00A78D85 /* Lookup.metal */,
 				63DC67D821430A17005D7868 /* Passthrough.metal */,
 				631C1604214386E600C710D5 /* SolidColor.metal */,
 				63E58EE721421DD800BAE55E /* TextureView.metal */,
+				63BEE66021ED983500C2CECF /* WhiteBalance.metal */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -260,6 +277,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63BEE66421EDAC4900C2CECF /* yiq.h in Headers */,
 				63FF7161212DB1CF00CB68FB /* ToneKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,7 +362,7 @@
 					};
 					63FF714F212DB1CF00CB68FB = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -434,9 +452,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63BEE65F21ED96F600C2CECF /* WhiteBalanceLayer.swift in Sources */,
 				63C28393212DBD87002AA1FF /* MTLTexture.swift in Sources */,
 				63E58EE821421DD800BAE55E /* TextureView.metal in Sources */,
 				63EE1C2D213E21780080DD59 /* UniformBufferProvider.swift in Sources */,
+				63BEE66121ED983500C2CECF /* WhiteBalance.metal in Sources */,
 				63C28385212DB6E5002AA1FF /* TextureInput.swift in Sources */,
 				63EE1C2B213E1EDC0080DD59 /* TextureView.swift in Sources */,
 				63C2838A212DB8D0002AA1FF /* ImageTexture.swift in Sources */,
@@ -738,6 +758,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -767,6 +788,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -6,10 +6,18 @@ class ViewController: UIViewController {
 
     var texture: ImageTexture = ImageTexture(image:   UIImage(named: "sample_image_1")!,
                                              options: ImageTexture.defaultOptions)
+    var computeLayer: ComputeLayer? {
+        didSet {
+            if computeLayer != nil {
+                computeLayer!.setTarget(textureView)
+                texture.processTexture()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        testSolidColorLayer()
+        testWhiteBalance()
     }
 
     func testPassThrough() {
@@ -34,6 +42,14 @@ class ViewController: UIViewController {
         texture.setTarget(lookupLayer)
         lookupLayer.setTarget(textureView)
         texture.processTexture()
+    }
+
+    func testWhiteBalance() {
+        let whiteBalanceLayer = WhiteBalanceLayer()
+        texture.setTarget(whiteBalanceLayer)
+        whiteBalanceLayer.temperature = 1.2
+        whiteBalanceLayer.tint = 0.5
+        computeLayer = whiteBalanceLayer
     }
 
     // MARK: - Render Layers
