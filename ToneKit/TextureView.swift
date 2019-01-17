@@ -108,6 +108,7 @@ open class TextureView: MTKView {
         commandBuffer?.addCompletedHandler({ _ -> Void in
             self.uniforms.signalAllSemaphores()
             self.renderSemaphore.signal()
+            self.draw()
         })
         commandBuffer?.present(currentDrawable!)
         commandBuffer?.commit()

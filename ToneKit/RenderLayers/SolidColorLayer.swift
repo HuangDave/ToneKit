@@ -24,7 +24,6 @@ open class SolidColorLayer: ComputeLayer, RenderLayer {
             Float(blue),
             Float(alpha)
             ])
-        colorUniform = float4(0,0,1,1)
         guard let buffer = uniforms.color?.nextAvailableBuffer(withContents: &colorUniform) else {
             fatalError("Error getting MTLBuffer for color uniform")
         }
