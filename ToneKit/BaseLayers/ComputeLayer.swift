@@ -85,7 +85,7 @@ open class ComputeLayer: TextureOutput {
     ///             otherwise return false and image processing is terminated.
     open func processingWillBegin() {
         if inputCount != 0 {
-            guard inputTexture != nil else {
+            guard inputTextures.first != nil else {
                 textureUpdateCancelled()
                 fatalError("Expecting an input but input texture is not set or is nil")
             }
@@ -104,6 +104,7 @@ open class ComputeLayer: TextureOutput {
         if inputCount != 0 {
             // encode input textures if the layer requires input textures for processing...
             for i in 0..<inputCount {
+                print("\(type(of: self)) setting texture as input: \(i)")
                 commandEncoder?.setTexture(inputTextures[i], index: i)
             }
         }
@@ -148,11 +149,6 @@ open class ComputeLayer: TextureOutput {
 
 // MARK: - TextureInput Implementation
 extension ComputeLayer: TextureInput {
-    internal(set) public var inputTexture: MTLTexture? {
-        get { return inputTextures[0] }
-        set { inputTextures[0] = newValue }
-    }
-
     public final func willReceiveTextureUpdate() {
         isProcessing = true
         notifyTargetForTextureUpdate()
@@ -172,11 +168,13 @@ extension ComputeLayer: TextureInput {
     ///     - index:   Index of texture to update if the layer
     ///                utilizes multiple inputs. By default index = 0.
     public func update(texture: MTLTexture, at index: UInt) {
-        assert(index < inputCount, "Target input index should not be greater than the input count")
-        if inputTexture !== texture || inputTexture == nil || isDirty {
-            inputTexture = texture
-            outputSize = MTLSizeMake(texture.width, texture.height, 1)
-            processTexture()
+        assert(index < inputCount, "Target input index should not be greater than the input count.")
+        if inputTextures[Int(index)] !== texture || inputTextures[Int(index)] == nil || isDirty {
+            inputTextures[Int(index)] = texture
+            if index == 0 { // the output size should default to the size of the base input texture
+                outputSize = MTLSizeMake(texture.width, texture.height, 1)
+                processTexture()
+            }
             target?.isDirty = true
         }
         target?.update(texture: self.texture!, at: targetIndex)
