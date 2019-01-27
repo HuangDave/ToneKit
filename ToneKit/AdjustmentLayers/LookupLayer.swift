@@ -5,14 +5,17 @@ open class LookupLayer: ComputeLayer {
         didSet { isDirty = true }
     }
 
-    public var intensity: Float = 1.0
-
-    public init(lookupImage name: String) {
+    public init() {
         super.init(functionName: "compute_lookup", inputCount: 2)
+        uniforms.intensity = UniformBuffer<Float>()
+        intensity = 1.0
+    }
+
+    public convenience init(lookupImage name: String) {
+        self.init()
         var textureOptions = ImageTexture.defaultOptions
         textureOptions.removeValue(forKey: MTKTextureLoader.Option.origin)
         lookupTexture = ImageTexture(image: UIImage(named: name)!, options: textureOptions)
-        uniforms.intensity = UniformBuffer<Float>()
     }
 
     override open func encodeTextures(for commandEncoder: MTLComputeCommandEncoder?) {

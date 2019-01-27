@@ -13,8 +13,12 @@ open class ComputeLayer: TextureOutput {
     internal(set) public var outputSize: MTLSize = MTLSize.zero
     /// Should be initialized if the layer requires any uniforms during processing.
     internal(set) public lazy var uniforms: UniformBufferProvider = UniformBufferProvider()
+    /// Should be added to _uniforms_ and encoded into the MTLComputeCommandEncoder if needed.
+    public var intensity: Float = 0.0 {
+        didSet { isDirty = true }
+    }
     /// Default threadgroup count of MTLSize(16, 16, 1)
-    public var threadgroupCount: MTLSize {
+    open var threadgroupCount: MTLSize {
         return MTLSize(width: 16, height: 16, depth: 1)
     }
     /// Calculate the threadgroup size for processing.
@@ -27,7 +31,7 @@ open class ComputeLayer: TextureOutput {
     ///
     /// - Note: The quotient is rounded up to prevent a black/white border
     ///         when rendering the texture since compute functions on take integers position.
-    public var threadgroups: MTLSize {
+    open var threadgroups: MTLSize {
         return MTLSize(width:  Int(ceilf(Float(outputSize.width)  / Float(threadgroupCount.width))),
                        height: Int(ceilf(Float(outputSize.height) / Float(threadgroupCount.height))),
                        depth:  1)
