@@ -31,7 +31,7 @@ class ViewController: UIViewController {
 
     func testBrightnessLayer() {
         let brightnessLayer = BrightnessLayer()
-        brightnessLayer.brightness = -0.3
+        brightnessLayer.intensity  = -0.3
         texture.setTarget(brightnessLayer)
         brightnessLayer.setTarget(textureView)
         texture.processTexture()
