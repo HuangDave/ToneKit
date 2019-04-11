@@ -26,9 +26,10 @@
 		63C28393212DBD87002AA1FF /* MTLTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28392212DBD87002AA1FF /* MTLTexture.swift */; };
 		63DC67D62142FC05005D7868 /* ComputeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DC67D52142FC05005D7868 /* ComputeLayer.swift */; };
 		63DC67D921430A17005D7868 /* Passthrough.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63DC67D821430A17005D7868 /* Passthrough.metal */; };
+		63E0EA49225FA5D3000925E2 /* ExampleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0EA48225FA5D3000925E2 /* ExampleSelectionViewController.swift */; };
+		63E0EA4B225FADFE000925E2 /* ExampleEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E0EA4A225FADFE000925E2 /* ExampleEditViewController.swift */; };
 		63E58EE821421DD800BAE55E /* TextureView.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63E58EE721421DD800BAE55E /* TextureView.metal */; };
 		63E58EF021421E1700BAE55E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E58EEF21421E1700BAE55E /* AppDelegate.swift */; };
-		63E58EF221421E1700BAE55E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E58EF121421E1700BAE55E /* ViewController.swift */; };
 		63E58EF521421E1700BAE55E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E58EF321421E1700BAE55E /* Main.storyboard */; };
 		63E58EF721421E1800BAE55E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63E58EF621421E1800BAE55E /* Assets.xcassets */; };
 		63E58EFA21421E1800BAE55E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63E58EF821421E1800BAE55E /* LaunchScreen.storyboard */; };
@@ -100,10 +101,11 @@
 		63C28392212DBD87002AA1FF /* MTLTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLTexture.swift; sourceTree = "<group>"; };
 		63DC67D52142FC05005D7868 /* ComputeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeLayer.swift; sourceTree = "<group>"; };
 		63DC67D821430A17005D7868 /* Passthrough.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Passthrough.metal; sourceTree = "<group>"; };
+		63E0EA48225FA5D3000925E2 /* ExampleSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSelectionViewController.swift; sourceTree = "<group>"; };
+		63E0EA4A225FADFE000925E2 /* ExampleEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleEditViewController.swift; sourceTree = "<group>"; };
 		63E58EE721421DD800BAE55E /* TextureView.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TextureView.metal; sourceTree = "<group>"; };
 		63E58EED21421E1700BAE55E /* ToneKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToneKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E58EEF21421E1700BAE55E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		63E58EF121421E1700BAE55E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		63E58EF421421E1700BAE55E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63E58EF621421E1800BAE55E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63E58EF921421E1800BAE55E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -214,7 +216,8 @@
 				63E58EF321421E1700BAE55E /* Main.storyboard */,
 				63E58EF621421E1800BAE55E /* Assets.xcassets */,
 				63E58EEF21421E1700BAE55E /* AppDelegate.swift */,
-				63E58EF121421E1700BAE55E /* ViewController.swift */,
+				63E0EA48225FA5D3000925E2 /* ExampleSelectionViewController.swift */,
+				63E0EA4A225FADFE000925E2 /* ExampleEditViewController.swift */,
 			);
 			path = ToneKitExample;
 			sourceTree = "<group>";
@@ -435,8 +438,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63E58EF221421E1700BAE55E /* ViewController.swift in Sources */,
 				63E58EF021421E1700BAE55E /* AppDelegate.swift in Sources */,
+				63E0EA49225FA5D3000925E2 /* ExampleSelectionViewController.swift in Sources */,
+				63E0EA4B225FADFE000925E2 /* ExampleEditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
