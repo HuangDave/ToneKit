@@ -1,7 +1,7 @@
 import MetalKit
 
 open class LookupLayer: ComputeLayer {
-    public internal(set) var lookupTexture: ImageTexture? {
+    public var lookupTexture: ImageTexture? {
         didSet { isDirty = true }
     }
 
