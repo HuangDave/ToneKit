@@ -17,6 +17,9 @@ open class ComputeLayer: TextureOutput {
     public var intensity: Float = 0.0 {
         didSet { isDirty = true }
     }
+    /// If enabled = FALSE, then the layer will not be processed and the incoming texture will
+    /// be passed directly to the target.
+    public var enabled = true
     /// Default threadgroup count of MTLSize(16, 16, 1)
     open var threadgroupCount: MTLSize {
         return MTLSize(width: 16, height: 16, depth: 1)
@@ -104,7 +107,6 @@ open class ComputeLayer: TextureOutput {
         if inputCount != 0 {
             // encode input textures if the layer requires input textures for processing...
             for i in 0..<inputCount {
-                print("\(type(of: self)) setting texture as input: \(i)")
                 commandEncoder?.setTexture(inputTextures[i], index: i)
             }
         }
@@ -131,10 +133,10 @@ open class ComputeLayer: TextureOutput {
         encodeUniforms(for: commandEncoder)
         commandEncoder?.dispatchThreadgroups(threadgroups, threadsPerThreadgroup: threadgroupCount)
         commandEncoder?.endEncoding()
+        commandBuffer?.addCompletedHandler({ _ in
+            self.processingDidFinish()
+        })
         commandBuffer?.commit()
-        commandBuffer?.waitUntilCompleted()
-
-        processingDidFinish()
     }
     /// Called when processing is finished.
     /// Override to perform any other post-processing tasks.
@@ -169,6 +171,10 @@ extension ComputeLayer: TextureInput {
     ///                utilizes multiple inputs. By default index = 0.
     public func update(texture: MTLTexture, at index: UInt) {
         assert(index < inputCount, "Target input index should not be greater than the input count.")
+        guard enabled else {  // skip the processing of the this layer if it is not enabled
+            target?.update(texture: texture, at: index)
+            return
+        }
         if inputTextures[Int(index)] !== texture || inputTextures[Int(index)] == nil || isDirty {
             inputTextures[Int(index)] = texture
             if index == 0 { // the output size should default to the size of the base input texture
