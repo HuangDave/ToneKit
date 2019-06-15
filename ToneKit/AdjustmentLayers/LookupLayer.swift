@@ -17,7 +17,7 @@ open class LookupLayer: ComputeLayer {
         intensity = 1.0
     }
 
-    public convenience init(lookupImage name: String) {
+    public convenience init(lookupImage image: UIImage) {
         self.init()
         lookupTexture = ImageTexture(image: UIImage(named: name)!,
                                      options: LookupLayer.defaultLookupTextureOptions)

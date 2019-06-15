@@ -30,6 +30,11 @@ class ExampleEditViewController: UIViewController {
         setupAdjustmentSliders()
         view.layoutIfNeeded()
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(userDidSelectSaveImage))
+
         texture.setTarget(computeLayer)
         computeLayer.setTarget(textureView)
         texture.processTexture()
@@ -62,6 +67,10 @@ class ExampleEditViewController: UIViewController {
             sliderStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30.0),
             sliderStackView.heightAnchor.constraint(equalToConstant: 100.0)
             ])
+    }
+
+    @objc private func userDidSelectSaveImage() {
+        UIImageWriteToSavedPhotosAlbum(textureView.texture!.uiImage(), nil, nil, nil)
     }
 }
 // MARK: - UISlider Adjustments Configurations

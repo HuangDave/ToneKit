@@ -145,7 +145,7 @@ extension ExampleSelectionViewController: UITableViewDelegate, UITableViewDataSo
                 brightnessLayer.intensity = value
             }
         case .lookup:
-            let lookupLayer = LookupLayer(lookupImage: "sample_lookup.png")
+            let lookupLayer = LookupLayer(lookupImage: UIImage(named: "sample_lookup.png")!)
             viewController.computeLayer = lookupLayer
             viewController.configureSingleSlider {
                 $0.minimumValue = 0.0
