@@ -1,6 +1,12 @@
 import MetalKit
 
 open class LookupLayer: ComputeLayer {
+    public static let defaultLookupTextureOptions: [MTKTextureLoader.Option : Any] = {
+        var textureOptions = ImageTexture.defaultOptions
+        textureOptions.removeValue(forKey: MTKTextureLoader.Option.origin)
+        return textureOptions
+    }()
+
     public var lookupTexture: ImageTexture? {
         didSet { isDirty = true }
     }
@@ -13,9 +19,8 @@ open class LookupLayer: ComputeLayer {
 
     public convenience init(lookupImage name: String) {
         self.init()
-        var textureOptions = ImageTexture.defaultOptions
-        textureOptions.removeValue(forKey: MTKTextureLoader.Option.origin)
-        lookupTexture = ImageTexture(image: UIImage(named: name)!, options: textureOptions)
+        lookupTexture = ImageTexture(image: UIImage(named: name)!,
+                                     options: LookupLayer.defaultLookupTextureOptions)
     }
 
     override open func encodeTextures(for commandEncoder: MTLComputeCommandEncoder?) {

@@ -171,10 +171,17 @@ extension ComputeLayer: TextureInput {
     ///                utilizes multiple inputs. By default index = 0.
     public func update(texture: MTLTexture, at index: UInt) {
         assert(index < inputCount, "Target input index should not be greater than the input count.")
-        guard enabled else {  // skip the processing of the this layer if it is not enabled
-            target?.update(texture: texture, at: index)
+
+        // skip the processing of the this layer if it is not enabled
+        guard enabled else {
+            if let inputTexture = inputTextures[0] {
+                target?.update(texture: inputTexture, at: targetIndex)
+            } else {
+                target?.update(texture: texture, at: targetIndex)
+            }
             return
         }
+
         if inputTextures[Int(index)] !== texture || inputTextures[Int(index)] == nil || isDirty {
             inputTextures[Int(index)] = texture
             if index == 0 { // the output size should default to the size of the base input texture
