@@ -184,7 +184,8 @@ extension ExampleSelectionViewController: UITableViewDelegate, UITableViewDataSo
         switch blendMode {
         case .alpha:
             let blendTexture: ImageTexture!
-            blendTexture = ImageTexture(image: UIImage(named: "sample_image_2")!)
+            blendTexture = ImageTexture(image: UIImage(named: "sample_image_2")!,
+                                        options: ImageTexture.defaultOptions)
             blendTexture.setTarget(blendLayer, at: 1)
             blendTexture.processTexture()
         default:
