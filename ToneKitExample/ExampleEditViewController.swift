@@ -37,7 +37,7 @@ class ExampleEditViewController: UIViewController {
 
         texture.setTarget(computeLayer)
         computeLayer.setTarget(textureView)
-        texture.processTexture()
+        texture.process()
     }
 
     private func setupTextureView() {
@@ -95,11 +95,11 @@ extension ExampleEditViewController {
 
     @objc private func topSliderValueDidChange(slider: UISlider) {
         topSliderValueDidChangeHandler?(slider.value)
-        texture.processTexture()
+        texture.process()
     }
 
     @objc private func bottomSliderValueDidChange(slider: UISlider) {
         bottomSliderValueDidChangeHandler?(slider.value)
-        texture.processTexture()
+        texture.process()
     }
 }

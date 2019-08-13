@@ -1,21 +1,22 @@
 import MetalKit.MTKView
+import simd
 
 open class TextureView: MTKView {
-    private var quadVertices: [float4] = [
-        float4(-1.0, -1.0, 0.0, 1.0),
-        float4( 1.0, -1.0, 0.0, 1.0),
-        float4(-1.0,  1.0, 0.0, 1.0),
-        float4( 1.0, -1.0, 0.0, 1.0),
-        float4(-1.0,  1.0, 0.0, 1.0),
-        float4( 1.0,  1.0, 0.0, 1.0)
+    private var quadVertices: [SIMD4<Float>] = [
+        SIMD4<Float>(-1.0, -1.0, 0.0, 1.0),
+        SIMD4<Float>( 1.0, -1.0, 0.0, 1.0),
+        SIMD4<Float>(-1.0,  1.0, 0.0, 1.0),
+        SIMD4<Float>( 1.0, -1.0, 0.0, 1.0),
+        SIMD4<Float>(-1.0,  1.0, 0.0, 1.0),
+        SIMD4<Float>( 1.0,  1.0, 0.0, 1.0)
     ]
-    private var textureCoordinates: [float2] = [
-        float2(0.0, 0.0),
-        float2(1.0, 0.0),
-        float2(0.0, 1.0),
-        float2(1.0, 0.0),
-        float2(0.0, 1.0),
-        float2(1.0, 1.0)
+    private var textureCoordinates: [SIMD2<Float>] = [
+        SIMD2<Float>(0.0, 0.0),
+        SIMD2<Float>(1.0, 0.0),
+        SIMD2<Float>(0.0, 1.0),
+        SIMD2<Float>(1.0, 0.0),
+        SIMD2<Float>(0.0, 1.0),
+        SIMD2<Float>(1.0, 1.0)
     ]
     internal(set) public var vertexFunction: MTLFunction!
     internal(set) public var fragmentFunction: MTLFunction!
@@ -25,7 +26,6 @@ open class TextureView: MTKView {
     public let renderSemaphore: DispatchSemaphore = DispatchSemaphore(value: 3)
     /// Current texture that is rendered on the view.
     internal(set) public var texture: MTLTexture?
-    internal(set) public var uniforms: UniformBufferProvider = UniformBufferProvider()
     /// TRUE if the view should re-render the texture.
     public var isDirty: Bool = false
 
@@ -58,15 +58,10 @@ open class TextureView: MTKView {
         } catch {
             fatalError("Error occured when building render pipeline.")
         }
-        let textureCoordinateBufferSize = quadVertices.count * MemoryLayout<float4>.size
-        let vertexBufferSize            = textureCoordinates.count * MemoryLayout<float2>.size
-        uniforms.textureCoordinates     = UniformBuffer<float4>(sizeOfBuffer: textureCoordinateBufferSize)
-        uniforms.vertex                 = UniformBuffer<float2>(sizeOfBuffer: vertexBufferSize)
     }
 
     deinit {
         renderSemaphore.signal()
-        uniforms.signalAllSemaphores()
     }
 
     // MARK: - Rendering
@@ -79,18 +74,7 @@ open class TextureView: MTKView {
             else { return }
 
         autoAdjustRenderFrame()
-
-        guard let textureCoordinateBuffer = uniforms.textureCoordinates?
-            .nextAvailableBuffer(withContents: &quadVertices) else {
-                fatalError("Error getting MTLBuffer for textureCoordinates uniform")
-        }
-        guard let vertexBuffer = uniforms.vertex?
-            .nextAvailableBuffer(withContents: &textureCoordinates) else {
-                fatalError("Error getting MTLBuffer for vertex uniform")
-        }
-
         renderSemaphore.wait()
-        uniforms.waitForAllSemaphores()
 
         renderPassDescriptor.colorAttachments[0].texture = currentDrawableTexture
         renderPassDescriptor.colorAttachments[0].storeAction = .store
@@ -100,13 +84,16 @@ open class TextureView: MTKView {
         let commandBuffer = MetalDevice.shared.commandQueue.makeCommandBuffer()
         let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
         renderEncoder?.setRenderPipelineState(renderPipeline)
-        renderEncoder?.setVertexBuffer(textureCoordinateBuffer, offset: 0, index: 0)
-        renderEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 1)
+        renderEncoder?.setVertexBytes(&quadVertices,
+                                      length: quadVertices.count * MemoryLayout<SIMD4<Float>>.size,
+                                      index: 0)
+        renderEncoder?.setVertexBytes(&textureCoordinates,
+                                      length: textureCoordinates.count * MemoryLayout<SIMD2<Float>>.size,
+                                      index: 1)
         renderEncoder?.setFragmentTexture(texture, index: 0)
         renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6, instanceCount: 1)
         renderEncoder?.endEncoding()
         commandBuffer?.addCompletedHandler({ _ -> Void in
-            self.uniforms.signalAllSemaphores()
             self.renderSemaphore.signal()
             self.draw()
         })
@@ -148,12 +135,13 @@ open class TextureView: MTKView {
 
 // MARK: - TextureInput Implementation
 extension TextureView: TextureInput {
+    open var inputCount: UInt { return 1 }
     /// Array containing the current rendered texture if any.
     open var inputTextures: [MTLTexture?]! { return [texture] }
 
     open func willReceiveTextureUpdate() { }
     open func textureUpdateCancelled() { }
-    open func processTexture() { }
+    open func process() { }
     /// Render the any newly processed texture received from a TextureOutput.
     ///
     /// - Parameters:
@@ -162,9 +150,7 @@ extension TextureView: TextureInput {
     open func update(texture: MTLTexture, at index: UInt = 0) {
         if self.texture !== texture || isDirty {
             self.texture = texture
-            //autoreleasepool {
-                self.render()
-            //}
+            self.render()
         }
     }
 }

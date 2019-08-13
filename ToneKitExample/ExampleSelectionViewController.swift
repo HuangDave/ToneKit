@@ -145,7 +145,7 @@ extension ExampleSelectionViewController: UITableViewDelegate, UITableViewDataSo
                 brightnessLayer.intensity = value
             }
         case .lookup:
-            let lookupLayer = LookupLayer(lookupImage: UIImage(named: "sample_lookup.png")!)
+            let lookupLayer = LookupLayer(lookupImageNamed: "sample_lookup.png")
             viewController.computeLayer = lookupLayer
             viewController.configureSingleSlider {
                 $0.minimumValue = 0.0
@@ -180,19 +180,20 @@ extension ExampleSelectionViewController: UITableViewDelegate, UITableViewDataSo
         let viewController = ExampleEditViewController()
         viewController.navigationItem.title = blendMode.name
         let blendLayer = blendMode.computeLayer
-        blendLayer.intensity = 1.0
+        // FIXME:
+        // blendLayer.intensity = 1.0
         switch blendMode {
         case .alpha:
             let blendTexture: ImageTexture!
             blendTexture = ImageTexture(image: UIImage(named: "sample_image_2")!,
                                         options: ImageTexture.defaultOptions)
             blendTexture.setTarget(blendLayer, at: 1)
-            blendTexture.processTexture()
+            blendTexture.process()
         default:
             let solidColorLayer = SolidColorLayer(color: UIColor(hex: 0x6BA0DF))
             solidColorLayer.setOutputSize(size: MTLSize(width: 100, height: 100, depth: 1))
             solidColorLayer.setTarget(blendLayer, at: 1)
-            solidColorLayer.renderTexture()
+            solidColorLayer.render()
         }
         viewController.computeLayer = blendLayer
         viewController.configureSingleSlider {
@@ -201,7 +202,8 @@ extension ExampleSelectionViewController: UITableViewDelegate, UITableViewDataSo
             $0.value = 1.0
         }
         viewController.configureTopSliderValueDidChange { value in
-            blendLayer.intensity = value
+            // FIXME:
+            // blendLayer.intensity = value
         }
         navigationController?.pushViewController(viewController, animated: true)
     }

@@ -13,8 +13,14 @@ open class ImageTexture: TextureOutput {
         .textureUsage:    MTLTextureUsage.shaderReadWrite.rawValue
     ]
 
+    public var target: TextureInput?
+    public var targetIndex: UInt = 0
+    public internal(set) var outputTexture: MTLTexture?
+    public var outputSize: MTLSize { return MTLSize(width: width, height: height, depth: 1) }
     public var width:  Int = 0
     public var height: Int = 0
+    public var isDirty: Bool = false
+
     /// Loads a MTLTexture from an image using the MTKTextureLoader.
     /// This should be used for iOS 10.0+
     ///
@@ -22,24 +28,23 @@ open class ImageTexture: TextureOutput {
     ///     - image:   Image to load.
     ///     - options: MTLTextureLoader options.
     public init(image: UIImage, options: [MTKTextureLoader.Option: Any] = ImageTexture.defaultOptions) {
-        super.init()
         guard let data = ImageTexture.fixOrientation(forImage: image).pngData() else {
             fatalError("Unable to load PNG Representation of UIImage")
         }
         let textureLoader = MTKTextureLoader(device: MetalDevice.shared.device)
         do {
-            texture = try textureLoader.newTexture(data: data, options: options)
+            outputTexture = try textureLoader.newTexture(data: data, options: options)
         } catch {
             fatalError("Unable to load texture from UIImage: \(error)")
         }
-        width = texture!.width
-        height = texture!.height
+        width = outputTexture!.width
+        height = outputTexture!.height
     }
     /// Notifies the texture's target to update/process the texture.
-    open override func processTexture() {
-        notifyTargetForTextureUpdate()
+    open func process() {
+        // notifyTargetForTextureUpdate()
         MetalDevice.shared.processingQueue.async {
-            self.target?.update(texture: self.texture!, at: self.targetIndex)
+            self.target?.update(texture: self.outputTexture!, at: self.targetIndex)
         }
     }
 }
