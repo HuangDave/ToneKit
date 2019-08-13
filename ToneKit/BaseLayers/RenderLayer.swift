@@ -2,7 +2,7 @@ import Metal
 
 public protocol RenderLayer: AnyObject {
     func setOutputSize(size: MTLSize)
-    func renderTexture()
+    func render()
 }
 
 extension RenderLayer where Self: ComputeLayer {
@@ -21,11 +21,11 @@ extension RenderLayer where Self: ComputeLayer {
     }
 
     /// Renders a texture and outputs it to the configured TextureInput target.
-    public func renderTexture() {
+    public func render() {
         if isDirty {
             isProcessing = true
-            processTexture()
+            process()
         }
-        target?.update(texture: texture!, at: targetIndex)
+        target?.update(texture: outputTexture!, at: targetIndex)
     }
 }

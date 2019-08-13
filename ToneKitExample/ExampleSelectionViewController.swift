@@ -145,7 +145,7 @@ extension ExampleSelectionViewController: UITableViewDelegate, UITableViewDataSo
                 brightnessLayer.intensity = value
             }
         case .lookup:
-            let lookupLayer = LookupLayer(lookupImage: UIImage(named: "sample_lookup.png")!)
+            let lookupLayer = LookupLayer(lookupImageNamed: "sample_lookup.png")
             viewController.computeLayer = lookupLayer
             viewController.configureSingleSlider {
                 $0.minimumValue = 0.0
@@ -157,6 +157,7 @@ extension ExampleSelectionViewController: UITableViewDelegate, UITableViewDataSo
             }
         case .passThrough:
             viewController.computeLayer = ComputeLayer()
+            viewController.disableAllSliders()
         case .whiteBalance:
             let whiteBalanceLayer = WhiteBalanceLayer()
             viewController.computeLayer = whiteBalanceLayer
@@ -177,23 +178,14 @@ extension ExampleSelectionViewController: UITableViewDelegate, UITableViewDataSo
     }
 
     private func presentExample(blendMode: ExampleCategories.BlendModes) {
+        let blendLayer = blendMode.computeLayer
+        guard var intensityAdjustableLayer = blendLayer as? IntensityAdjustable else {
+            fatalError()
+        }
+        intensityAdjustableLayer.intensity = 1.0
+
         let viewController = ExampleEditViewController()
         viewController.navigationItem.title = blendMode.name
-        let blendLayer = blendMode.computeLayer
-        blendLayer.intensity = 1.0
-        switch blendMode {
-        case .alpha:
-            let blendTexture: ImageTexture!
-            blendTexture = ImageTexture(image: UIImage(named: "sample_image_2")!,
-                                        options: ImageTexture.defaultOptions)
-            blendTexture.setTarget(blendLayer, at: 1)
-            blendTexture.processTexture()
-        default:
-            let solidColorLayer = SolidColorLayer(color: UIColor(hex: 0x6BA0DF))
-            solidColorLayer.setOutputSize(size: MTLSize(width: 100, height: 100, depth: 1))
-            solidColorLayer.setTarget(blendLayer, at: 1)
-            solidColorLayer.renderTexture()
-        }
         viewController.computeLayer = blendLayer
         viewController.configureSingleSlider {
             $0.minimumValue = 0.0
@@ -201,7 +193,21 @@ extension ExampleSelectionViewController: UITableViewDelegate, UITableViewDataSo
             $0.value = 1.0
         }
         viewController.configureTopSliderValueDidChange { value in
-            blendLayer.intensity = value
+            intensityAdjustableLayer.intensity = value
+        }
+
+        switch blendMode {
+        case .alpha:
+            let blendTexture: ImageTexture!
+            blendTexture = ImageTexture(image: UIImage(named: "sample_image_2")!,
+                                        options: ImageTexture.defaultOptions)
+            blendTexture.setTarget(blendLayer, at: 1)
+            blendTexture.process()
+        default:
+            let solidColorLayer = SolidColorLayer(color: UIColor(hex: 0x6BA0DF))
+            solidColorLayer.setOutputSize(size: MTLSize(width: 100, height: 100, depth: 1))
+            solidColorLayer.setTarget(blendLayer, at: 1)
+            solidColorLayer.render()
         }
         navigationController?.pushViewController(viewController, animated: true)
     }

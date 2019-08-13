@@ -1,22 +1,26 @@
 import Metal
-/// The ComputeLayer performs a kernel compute operation on an input texture and outputs
-/// the processed texture to its target for any further processing.
-open class ComputeLayer: TextureOutput {
-    /// The number of accepted texture inputs. The default count = 1 and should be overridden is
-    /// different input count is desired.
-    internal(set) public var inputCount: Int!
+
+open class ComputeLayer: TextureIO {
+    open var functionName: String { return "compute_passthrough" }
+    open var inputCount: UInt { return 1 }
     /// Array containing all input textures that are used for processing.
     /// The size allocated for the array is based on the specified inputCount.
-    internal(set) public var inputTextures: [MTLTexture?]!
-    internal(set) public var computePipeline: MTLComputePipelineState!
-    internal(set) public var computeSemaphore: DispatchSemaphore!
-    internal(set) public var outputSize: MTLSize = MTLSize.zero
+    public internal(set) var inputTextures: [MTLTexture?]!
+    public internal(set) var computeFunction: MTLFunction!
+    public internal(set) var computePipeline: MTLComputePipelineState!
+    public internal(set) var computeSemaphore: DispatchSemaphore!
+    public internal(set) var textureUpdateSemaphore = DispatchSemaphore(value: 1)
     /// Should be initialized if the layer requires any uniforms during processing.
-    internal(set) public lazy var uniforms: UniformBufferProvider = UniformBufferProvider()
-    /// Should be added to _uniforms_ and encoded into the MTLComputeCommandEncoder if needed.
-    public var intensity: Float = 0.0 {
-        didSet { isDirty = true }
-    }
+    public internal(set) lazy var uniforms = UniformSettings()
+    public var target: TextureInput?
+    public var targetIndex: UInt = 0
+    public internal(set) var outputTexture: MTLTexture?
+    public internal(set) var outputSize: MTLSize = MTLSize.zero
+    /// TRUE if the layer is currently being processed. This value is set to false when
+    /// processingDidFinish() is completed.
+    public internal(set) var isProcessing: Bool = false
+    /// TRUE if the layer needs processing.
+    public var isDirty: Bool = true
     /// If enabled = FALSE, then the layer will not be processed and the incoming texture will
     /// be passed directly to the target.
     public var enabled = true
@@ -32,8 +36,8 @@ open class ComputeLayer: TextureOutput {
     /// ie. The default threadgroupCount is 8 x 8. If the texture size is 32 x 48,
     ///     then the threadgroupSize is 4 x 6.
     ///
-    /// - Note: The quotient is rounded up to prevent a black/white border
-    ///         when rendering the texture since compute functions on take integers position.
+    /// - Note: The quotient is rounded to prevent a black/white border when rendering the texture
+    ///         since compute functions on take integers position.
     open var threadgroups: MTLSize {
         return MTLSize(width:  Int(ceilf(Float(outputSize.width)  / Float(threadgroupCount.width))),
                        height: Int(ceilf(Float(outputSize.height) / Float(threadgroupCount.height))),
@@ -42,42 +46,43 @@ open class ComputeLayer: TextureOutput {
 
     // MARK: - Initializers
 
-    /// Initializes a ComputeLayer with the specified kernel compute function.
-    ///
-    /// - Parameters:
-    ///    - functionName: Name of the kernel compute function.
-    public init(functionName: String = "compute_passthrough", inputCount: Int = 1) {
-        super.init()
-        let computeFunction = MetalDevice.shared.makeFunction(name: functionName)
+    public init() {
+        computeFunction = MetalDevice.shared.makeFunction(name: functionName)
         do {
             try computePipeline = MetalDevice.shared.device.makeComputePipelineState(function: computeFunction)
         } catch {
-            fatalError("Error occurred when building compute pipeline for function: \(computeFunction)")
+            fatalError("Error occurred when building compute pipeline for function: \(computeFunction.name)")
         }
         computeSemaphore = DispatchSemaphore(value: 3)
-        self.inputCount = inputCount
-        inputTextures = [MTLTexture?](repeating: nil, count: self.inputCount)
-        isDirty = true
+        inputTextures = [MTLTexture?](repeating: nil, count: Int(inputCount))
+        registerUniforms()
     }
 
     deinit {
-        uniforms.signalAllSemaphores()
         computeSemaphore.signal()
     }
 
-    // MARK: - Processing
+    // MARK: -
 
-    /// Creates an output texture for writing the output of the processed texture if necessary.
+    /// Invoked during initialization to register any uniforms required during processing.
+    ///
+    /// Uniforms are automatically encoded to the MTLComputeCommandEncoder in the order they are registered.
+    ///
+    /// Should override to register any required uniforms.
+    open func registerUniforms() {
+
+    }
+    /// Initializes an output texture for writing the output of the processed texture if necessary.
     open func generateOutputTextureIfNeeded() {
-        if texture == nil ||
-            texture?.width  != outputSize.width ||
-            texture?.height != outputSize.height {
+        if outputTexture == nil ||
+            outputTexture?.width  != outputSize.width ||
+            outputTexture?.height != outputSize.height {
             let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm,
                                                                              width: outputSize.width,
                                                                              height: outputSize.height,
                                                                              mipmapped: false)
             textureDescriptor.usage = .shaderReadWrite
-            texture = MetalDevice.shared.device.makeTexture(descriptor: textureDescriptor)
+            outputTexture = MetalDevice.shared.device.makeTexture(descriptor: textureDescriptor)
         }
     }
     /// Prepares the layer for processing.
@@ -85,7 +90,7 @@ open class ComputeLayer: TextureOutput {
     /// Should override to add more pre-processing tasks.
     ///
     /// - Returns: True if all checks pass or if all pre-processing tasks are completed,
-    ///             otherwise return false and image processing is terminated.
+    ///            otherwise return false and image processing is terminated.
     open func processingWillBegin() {
         if inputCount != 0 {
             guard inputTextures.first != nil else {
@@ -94,7 +99,6 @@ open class ComputeLayer: TextureOutput {
             }
         }
         computeSemaphore.wait()
-        uniforms.waitForAllSemaphores()
         generateOutputTextureIfNeeded()
     }
     /// Encodes the desired MTLTextures on the command encoder.
@@ -106,12 +110,12 @@ open class ComputeLayer: TextureOutput {
     open func encodeTextures(for commandEncoder: MTLComputeCommandEncoder?) {
         if inputCount != 0 {
             // encode input textures if the layer requires input textures for processing...
-            for i in 0..<inputCount {
-                commandEncoder?.setTexture(inputTextures[i], index: i)
+            for i in 0 ..< Int(inputCount) {
+                commandEncoder?.setTexture(inputTextures![i], index: i)
             }
         }
         // if inputCount = 0, then the output texture will be encoded at index 0
-        commandEncoder?.setTexture(texture, index: inputCount)
+        commandEncoder?.setTexture(outputTexture, index: Int(inputCount))
     }
     /// Encodes MTLBuffers containing desired uniforms on the command encoder.
     ///
@@ -120,10 +124,14 @@ open class ComputeLayer: TextureOutput {
     /// - Parameters:
     ///    - commandEncoder: The MTLComputeCommandEcoder used for processing.
     open func encodeUniforms(for commandEncoder: MTLComputeCommandEncoder?) {
-
+        let uniformsList = uniforms.uniformsList
+        for bufferIndex in 0 ..< uniformsList.count {
+            let buffer = uniformsList[bufferIndex].nextAvailableBuffer
+            commandEncoder?.setBuffer(buffer, offset: 0, index: bufferIndex)
+        }
     }
 
-    open override func processTexture() {
+    open func process() {
         processingWillBegin()
 
         let commandBuffer = MetalDevice.shared.commandQueue.makeCommandBuffer()
@@ -133,15 +141,14 @@ open class ComputeLayer: TextureOutput {
         encodeUniforms(for: commandEncoder)
         commandEncoder?.dispatchThreadgroups(threadgroups, threadsPerThreadgroup: threadgroupCount)
         commandEncoder?.endEncoding()
-        commandBuffer?.addCompletedHandler({ _ in
-            self.processingDidFinish()
-        })
         commandBuffer?.commit()
+        commandBuffer?.waitUntilCompleted()
+
+        processingDidFinish()
     }
     /// Called when processing is finished.
     /// Override to perform any other post-processing tasks.
     open func processingDidFinish() {
-        uniforms.signalAllSemaphores()
         computeSemaphore.signal()
         isProcessing = false
         isDirty = false
@@ -153,16 +160,15 @@ open class ComputeLayer: TextureOutput {
 extension ComputeLayer: TextureInput {
     public final func willReceiveTextureUpdate() {
         isProcessing = true
-        notifyTargetForTextureUpdate()
+        target?.willReceiveTextureUpdate()
     }
 
     public final func textureUpdateCancelled() {
-        uniforms.signalAllSemaphores()
         computeSemaphore.signal()
         isProcessing = false
-        notifyTargetTextureUpdateCancelled()
+        target?.textureUpdateCancelled()
     }
-    /// Called when adjustment layer receives a new texture. The layer will process the new layer if
+    /// Called when the layer receives a new texture. The layer will process the new texture if
     /// needed and send the new texture to its target.
     ///
     /// - Parameters:
@@ -184,12 +190,12 @@ extension ComputeLayer: TextureInput {
 
         if inputTextures[Int(index)] !== texture || inputTextures[Int(index)] == nil || isDirty {
             inputTextures[Int(index)] = texture
-            if index == 0 { // the output size should default to the size of the base input texture
+            if index == 0 {  // the output size should default to the size of the base input texture
                 outputSize = MTLSizeMake(texture.width, texture.height, 1)
-                processTexture()
+                process()
             }
             target?.isDirty = true
         }
-        target?.update(texture: self.texture!, at: targetIndex)
+        target?.update(texture: self.outputTexture!, at: targetIndex)
     }
 }

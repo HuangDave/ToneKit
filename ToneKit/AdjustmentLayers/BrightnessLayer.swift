@@ -1,16 +1,17 @@
 import Metal
 
 open class BrightnessLayer: ComputeLayer {
-    public init() {
-        super.init(functionName: "compute_brightness")
-        uniforms.brightness = UniformBuffer<Float>()
+    open override var functionName: String { return "compute_brightness" }
+    /// Brightness ranging from -0.3 to 0.3, with 0.0 being no change.
+    public var intensity: Float {
+        get { return uniforms.brightness!.value }
+        set {
+            uniforms.brightness!.value = newValue
+            isDirty = true
+        }
     }
 
-    open override func encodeUniforms(for commandEncoder: MTLComputeCommandEncoder?) {
-        guard let buffer = uniforms.brightness?
-            .nextAvailableBuffer(withContents: &intensity) else {
-                fatalError("Error getting MTLBuffer for brightness uniform")
-        }
-        commandEncoder?.setBuffer(buffer, offset: 0, index: 0)
+    open override func registerUniforms() {
+        uniforms.register(uniform: Uniform<Float>(initialValue: 0.0), withKey: "brightness")
     }
 }

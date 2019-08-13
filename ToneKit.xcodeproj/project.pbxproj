@@ -7,19 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		631C1603214383BD00C710D5 /* SolidColorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631C1602214383BD00C710D5 /* SolidColorLayer.swift */; };
 		631C1605214386E600C710D5 /* SolidColor.metal in Sources */ = {isa = PBXBuildFile; fileRef = 631C1604214386E600C710D5 /* SolidColor.metal */; };
 		631C1607214395F200C710D5 /* Brightness.metal in Sources */ = {isa = PBXBuildFile; fileRef = 631C1606214395F200C710D5 /* Brightness.metal */; };
-		631C160A2143969E00C710D5 /* BrightnessLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631C16092143969E00C710D5 /* BrightnessLayer.swift */; };
 		6324ED1F226ED220009300B0 /* blend_modes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6324ED1D226ED220009300B0 /* blend_modes.h */; };
 		6324ED20226ED220009300B0 /* blend_modes.metal in Sources */ = {isa = PBXBuildFile; fileRef = 6324ED1E226ED220009300B0 /* blend_modes.metal */; };
 		6324ED22226EDDDC009300B0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324ED21226EDDDC009300B0 /* UIColor.swift */; };
 		632E8155226370150063E628 /* yiq.metal in Sources */ = {isa = PBXBuildFile; fileRef = 632E8154226370150063E628 /* yiq.metal */; };
-		632E908C21F098B70068FD3A /* AlphaBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632E908B21F098B70068FD3A /* AlphaBlendLayer.swift */; };
 		632E908E21F099750068FD3A /* AlphaBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = 632E908D21F099750068FD3A /* AlphaBlend.metal */; };
-		636A6C2E216F11E500A78D85 /* LookupLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636A6C2D216F11E500A78D85 /* LookupLayer.swift */; };
 		636A6C30216F1FEB00A78D85 /* Lookup.metal in Sources */ = {isa = PBXBuildFile; fileRef = 636A6C2F216F1FEB00A78D85 /* Lookup.metal */; };
-		636E6F5321434074006E59E0 /* RenderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E6F5221434074006E59E0 /* RenderLayer.swift */; };
 		63A0DB562209A4520002B8CA /* DarkenBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63A0DB552209A4520002B8CA /* DarkenBlend.metal */; };
 		63A0DB582209A45E0002B8CA /* HardLightBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63A0DB572209A45E0002B8CA /* HardLightBlend.metal */; };
 		63A0DB5A2209A4690002B8CA /* SoftLightBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63A0DB592209A4690002B8CA /* SoftLightBlend.metal */; };
@@ -28,23 +23,13 @@
 		63A0DB602209A4B10002B8CA /* MultiplyBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63A0DB5F2209A4B10002B8CA /* MultiplyBlend.metal */; };
 		63A0DB622209A4BE0002B8CA /* OverlayBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63A0DB612209A4BE0002B8CA /* OverlayBlend.metal */; };
 		63A0DB642209A4CB0002B8CA /* ScreenBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63A0DB632209A4CB0002B8CA /* ScreenBlend.metal */; };
+		63A788C223025864001F6BB7 /* UniformSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A788C123025864001F6BB7 /* UniformSettings.swift */; };
+		63AB92B3237281F70067AE8D /* IntensityAdjustable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AB92B2237281F70067AE8D /* IntensityAdjustable.swift */; };
 		63B58C662138F661004F9AA7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 63B58C652138F661004F9AA7 /* .swiftlint.yml */; };
-		63BCDFEB21FD094C009B56BB /* ColorDodgeBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BCDFEA21FD094C009B56BB /* ColorDodgeBlendLayer.swift */; };
-		63BCDFED21FD0A21009B56BB /* DarkenBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BCDFEC21FD0A21009B56BB /* DarkenBlendLayer.swift */; };
-		63BCDFEF21FD0A48009B56BB /* HardLightBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BCDFEE21FD0A48009B56BB /* HardLightBlendLayer.swift */; };
-		63BCDFF121FD0ADF009B56BB /* LinearDodgeBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BCDFF021FD0ADF009B56BB /* LinearDodgeBlendLayer.swift */; };
-		63BCDFF321FD0B27009B56BB /* LightenBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BCDFF221FD0B27009B56BB /* LightenBlendLayer.swift */; };
-		63BCDFF521FD0B60009B56BB /* OverlayBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BCDFF421FD0B60009B56BB /* OverlayBlendLayer.swift */; };
-		63BCDFF721FD0BE5009B56BB /* MultiplyBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BCDFF621FD0BE5009B56BB /* MultiplyBlendLayer.swift */; };
-		63BCDFF921FD0C0A009B56BB /* ScreenBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BCDFF821FD0C0A009B56BB /* ScreenBlendLayer.swift */; };
-		63BCDFFB21FD0C2D009B56BB /* SoftLightBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BCDFFA21FD0C2D009B56BB /* SoftLightBlendLayer.swift */; };
 		63BCDFFD21FD14CD009B56BB /* ColorDodgeBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63BCDFFC21FD14CD009B56BB /* ColorDodgeBlend.metal */; };
-		63BEE65F21ED96F600C2CECF /* WhiteBalanceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BEE65E21ED96F600C2CECF /* WhiteBalanceLayer.swift */; };
 		63BEE66121ED983500C2CECF /* WhiteBalance.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63BEE66021ED983500C2CECF /* WhiteBalance.metal */; };
 		63BEE66421EDAC4900C2CECF /* yiq.h in Headers */ = {isa = PBXBuildFile; fileRef = 63BEE66221EDAC4900C2CECF /* yiq.h */; };
 		63C28383212DB5B6002AA1FF /* MetalDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28382212DB5B6002AA1FF /* MetalDevice.swift */; };
-		63C28385212DB6E5002AA1FF /* TextureInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28384212DB6E5002AA1FF /* TextureInput.swift */; };
-		63C28387212DB726002AA1FF /* TextureOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28386212DB726002AA1FF /* TextureOutput.swift */; };
 		63C2838A212DB8D0002AA1FF /* ImageTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28389212DB8D0002AA1FF /* ImageTexture.swift */; };
 		63C2838F212DBD42002AA1FF /* MTLSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C2838E212DBD42002AA1FF /* MTLSize.swift */; };
 		63C28393212DBD87002AA1FF /* MTLTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C28392212DBD87002AA1FF /* MTLTexture.swift */; };
@@ -63,7 +48,24 @@
 		63E58F142142204600BAE55E /* ToneKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63FF7150212DB1CF00CB68FB /* ToneKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63EE1C29213E187E0080DD59 /* MTLTextureUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EE1C28213E187E0080DD59 /* MTLTextureUsage.swift */; };
 		63EE1C2B213E1EDC0080DD59 /* TextureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EE1C2A213E1EDC0080DD59 /* TextureView.swift */; };
-		63EE1C2D213E21780080DD59 /* UniformBufferProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EE1C2C213E21780080DD59 /* UniformBufferProvider.swift */; };
+		63EEFCAC22F8FB1700774D43 /* TextureIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCAB22F8FB1700774D43 /* TextureIO.swift */; };
+		63EEFCAF22F8FC0900774D43 /* TextureOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCAE22F8FC0900774D43 /* TextureOutput.swift */; };
+		63EEFCB122F8FC1100774D43 /* TextureInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCB022F8FC1100774D43 /* TextureInput.swift */; };
+		63EEFCC022F9084700774D43 /* BrightnessLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631C16092143969E00C710D5 /* BrightnessLayer.swift */; };
+		63EEFCDA22F9150500774D43 /* WhiteBalanceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCCE22F9150400774D43 /* WhiteBalanceLayer.swift */; };
+		63EEFCDB22F9150500774D43 /* DarkenBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCCF22F9150400774D43 /* DarkenBlendLayer.swift */; };
+		63EEFCDC22F9150500774D43 /* AlphaBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCD022F9150400774D43 /* AlphaBlendLayer.swift */; };
+		63EEFCDD22F9150500774D43 /* HardLightBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCD122F9150400774D43 /* HardLightBlendLayer.swift */; };
+		63EEFCDE22F9150500774D43 /* LightenBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCD222F9150400774D43 /* LightenBlendLayer.swift */; };
+		63EEFCDF22F9150500774D43 /* ColorDodgeBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCD322F9150400774D43 /* ColorDodgeBlendLayer.swift */; };
+		63EEFCE022F9150500774D43 /* LookupLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCD422F9150500774D43 /* LookupLayer.swift */; };
+		63EEFCE122F9150500774D43 /* SoftLightBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCD522F9150500774D43 /* SoftLightBlendLayer.swift */; };
+		63EEFCE222F9150500774D43 /* OverlayBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCD622F9150500774D43 /* OverlayBlendLayer.swift */; };
+		63EEFCE322F9150500774D43 /* MultiplyBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCD722F9150500774D43 /* MultiplyBlendLayer.swift */; };
+		63EEFCE422F9150500774D43 /* ScreenBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCD822F9150500774D43 /* ScreenBlendLayer.swift */; };
+		63EEFCE522F9150500774D43 /* LinearDodgeBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCD922F9150500774D43 /* LinearDodgeBlendLayer.swift */; };
+		63EEFCE722F9171400774D43 /* RenderLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCE622F9171400774D43 /* RenderLayer.swift */; };
+		63EEFCEC22F97F0400774D43 /* SolidColorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EEFCEB22F97F0400774D43 /* SolidColorLayer.swift */; };
 		63FF7161212DB1CF00CB68FB /* ToneKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FF7153212DB1CF00CB68FB /* ToneKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -106,7 +108,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		631C1602214383BD00C710D5 /* SolidColorLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidColorLayer.swift; sourceTree = "<group>"; };
 		631C1604214386E600C710D5 /* SolidColor.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SolidColor.metal; sourceTree = "<group>"; };
 		631C1606214395F200C710D5 /* Brightness.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Brightness.metal; sourceTree = "<group>"; };
 		631C16092143969E00C710D5 /* BrightnessLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessLayer.swift; sourceTree = "<group>"; };
@@ -114,11 +115,8 @@
 		6324ED1E226ED220009300B0 /* blend_modes.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = blend_modes.metal; sourceTree = "<group>"; };
 		6324ED21226EDDDC009300B0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		632E8154226370150063E628 /* yiq.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = yiq.metal; sourceTree = "<group>"; };
-		632E908B21F098B70068FD3A /* AlphaBlendLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaBlendLayer.swift; sourceTree = "<group>"; };
 		632E908D21F099750068FD3A /* AlphaBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AlphaBlend.metal; sourceTree = "<group>"; };
-		636A6C2D216F11E500A78D85 /* LookupLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupLayer.swift; sourceTree = "<group>"; };
 		636A6C2F216F1FEB00A78D85 /* Lookup.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Lookup.metal; sourceTree = "<group>"; };
-		636E6F5221434074006E59E0 /* RenderLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderLayer.swift; sourceTree = "<group>"; };
 		63A0DB552209A4520002B8CA /* DarkenBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DarkenBlend.metal; sourceTree = "<group>"; };
 		63A0DB572209A45E0002B8CA /* HardLightBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = HardLightBlend.metal; sourceTree = "<group>"; };
 		63A0DB592209A4690002B8CA /* SoftLightBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SoftLightBlend.metal; sourceTree = "<group>"; };
@@ -127,23 +125,13 @@
 		63A0DB5F2209A4B10002B8CA /* MultiplyBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MultiplyBlend.metal; sourceTree = "<group>"; };
 		63A0DB612209A4BE0002B8CA /* OverlayBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = OverlayBlend.metal; sourceTree = "<group>"; };
 		63A0DB632209A4CB0002B8CA /* ScreenBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ScreenBlend.metal; sourceTree = "<group>"; };
+		63A788C123025864001F6BB7 /* UniformSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniformSettings.swift; sourceTree = "<group>"; };
+		63AB92B2237281F70067AE8D /* IntensityAdjustable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityAdjustable.swift; sourceTree = "<group>"; };
 		63B58C652138F661004F9AA7 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
-		63BCDFEA21FD094C009B56BB /* ColorDodgeBlendLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDodgeBlendLayer.swift; sourceTree = "<group>"; };
-		63BCDFEC21FD0A21009B56BB /* DarkenBlendLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkenBlendLayer.swift; sourceTree = "<group>"; };
-		63BCDFEE21FD0A48009B56BB /* HardLightBlendLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardLightBlendLayer.swift; sourceTree = "<group>"; };
-		63BCDFF021FD0ADF009B56BB /* LinearDodgeBlendLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearDodgeBlendLayer.swift; sourceTree = "<group>"; };
-		63BCDFF221FD0B27009B56BB /* LightenBlendLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightenBlendLayer.swift; sourceTree = "<group>"; };
-		63BCDFF421FD0B60009B56BB /* OverlayBlendLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayBlendLayer.swift; sourceTree = "<group>"; };
-		63BCDFF621FD0BE5009B56BB /* MultiplyBlendLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplyBlendLayer.swift; sourceTree = "<group>"; };
-		63BCDFF821FD0C0A009B56BB /* ScreenBlendLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBlendLayer.swift; sourceTree = "<group>"; };
-		63BCDFFA21FD0C2D009B56BB /* SoftLightBlendLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftLightBlendLayer.swift; sourceTree = "<group>"; };
 		63BCDFFC21FD14CD009B56BB /* ColorDodgeBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorDodgeBlend.metal; sourceTree = "<group>"; };
-		63BEE65E21ED96F600C2CECF /* WhiteBalanceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteBalanceLayer.swift; sourceTree = "<group>"; };
 		63BEE66021ED983500C2CECF /* WhiteBalance.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = WhiteBalance.metal; sourceTree = "<group>"; };
 		63BEE66221EDAC4900C2CECF /* yiq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = yiq.h; sourceTree = "<group>"; };
 		63C28382212DB5B6002AA1FF /* MetalDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalDevice.swift; sourceTree = "<group>"; };
-		63C28384212DB6E5002AA1FF /* TextureInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureInput.swift; sourceTree = "<group>"; };
-		63C28386212DB726002AA1FF /* TextureOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureOutput.swift; sourceTree = "<group>"; };
 		63C28389212DB8D0002AA1FF /* ImageTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTexture.swift; sourceTree = "<group>"; };
 		63C2838E212DBD42002AA1FF /* MTLSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLSize.swift; sourceTree = "<group>"; };
 		63C28392212DBD87002AA1FF /* MTLTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLTexture.swift; sourceTree = "<group>"; };
@@ -164,7 +152,23 @@
 		63E58F1121421E9F00BAE55E /* MTLSizeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLSizeTests.swift; sourceTree = "<group>"; };
 		63EE1C28213E187E0080DD59 /* MTLTextureUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLTextureUsage.swift; sourceTree = "<group>"; };
 		63EE1C2A213E1EDC0080DD59 /* TextureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureView.swift; sourceTree = "<group>"; };
-		63EE1C2C213E21780080DD59 /* UniformBufferProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniformBufferProvider.swift; sourceTree = "<group>"; };
+		63EEFCAB22F8FB1700774D43 /* TextureIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureIO.swift; sourceTree = "<group>"; };
+		63EEFCAE22F8FC0900774D43 /* TextureOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureOutput.swift; sourceTree = "<group>"; };
+		63EEFCB022F8FC1100774D43 /* TextureInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureInput.swift; sourceTree = "<group>"; };
+		63EEFCCE22F9150400774D43 /* WhiteBalanceLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteBalanceLayer.swift; sourceTree = "<group>"; };
+		63EEFCCF22F9150400774D43 /* DarkenBlendLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkenBlendLayer.swift; sourceTree = "<group>"; };
+		63EEFCD022F9150400774D43 /* AlphaBlendLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaBlendLayer.swift; sourceTree = "<group>"; };
+		63EEFCD122F9150400774D43 /* HardLightBlendLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HardLightBlendLayer.swift; sourceTree = "<group>"; };
+		63EEFCD222F9150400774D43 /* LightenBlendLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightenBlendLayer.swift; sourceTree = "<group>"; };
+		63EEFCD322F9150400774D43 /* ColorDodgeBlendLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorDodgeBlendLayer.swift; sourceTree = "<group>"; };
+		63EEFCD422F9150500774D43 /* LookupLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookupLayer.swift; sourceTree = "<group>"; };
+		63EEFCD522F9150500774D43 /* SoftLightBlendLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoftLightBlendLayer.swift; sourceTree = "<group>"; };
+		63EEFCD622F9150500774D43 /* OverlayBlendLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayBlendLayer.swift; sourceTree = "<group>"; };
+		63EEFCD722F9150500774D43 /* MultiplyBlendLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplyBlendLayer.swift; sourceTree = "<group>"; };
+		63EEFCD822F9150500774D43 /* ScreenBlendLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenBlendLayer.swift; sourceTree = "<group>"; };
+		63EEFCD922F9150500774D43 /* LinearDodgeBlendLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearDodgeBlendLayer.swift; sourceTree = "<group>"; };
+		63EEFCE622F9171400774D43 /* RenderLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderLayer.swift; sourceTree = "<group>"; };
+		63EEFCEB22F97F0400774D43 /* SolidColorLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolidColorLayer.swift; sourceTree = "<group>"; };
 		63FF7150212DB1CF00CB68FB /* ToneKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ToneKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63FF7153212DB1CF00CB68FB /* ToneKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToneKit.h; sourceTree = "<group>"; };
 		63FF7154212DB1CF00CB68FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -197,30 +201,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		631C16012143839700C710D5 /* RenderLayers */ = {
-			isa = PBXGroup;
-			children = (
-				631C1602214383BD00C710D5 /* SolidColorLayer.swift */,
-			);
-			path = RenderLayers;
-			sourceTree = "<group>";
-		};
 		631C16082143968B00C710D5 /* AdjustmentLayers */ = {
 			isa = PBXGroup;
 			children = (
-				632E908B21F098B70068FD3A /* AlphaBlendLayer.swift */,
+				63EEFCD022F9150400774D43 /* AlphaBlendLayer.swift */,
 				631C16092143969E00C710D5 /* BrightnessLayer.swift */,
-				63BCDFEA21FD094C009B56BB /* ColorDodgeBlendLayer.swift */,
-				63BCDFEC21FD0A21009B56BB /* DarkenBlendLayer.swift */,
-				63BCDFEE21FD0A48009B56BB /* HardLightBlendLayer.swift */,
-				63BCDFF021FD0ADF009B56BB /* LinearDodgeBlendLayer.swift */,
-				63BCDFF221FD0B27009B56BB /* LightenBlendLayer.swift */,
-				636A6C2D216F11E500A78D85 /* LookupLayer.swift */,
-				63BCDFF621FD0BE5009B56BB /* MultiplyBlendLayer.swift */,
-				63BCDFF421FD0B60009B56BB /* OverlayBlendLayer.swift */,
-				63BCDFF821FD0C0A009B56BB /* ScreenBlendLayer.swift */,
-				63BCDFFA21FD0C2D009B56BB /* SoftLightBlendLayer.swift */,
-				63BEE65E21ED96F600C2CECF /* WhiteBalanceLayer.swift */,
+				63EEFCD322F9150400774D43 /* ColorDodgeBlendLayer.swift */,
+				63EEFCCF22F9150400774D43 /* DarkenBlendLayer.swift */,
+				63EEFCD122F9150400774D43 /* HardLightBlendLayer.swift */,
+				63EEFCD222F9150400774D43 /* LightenBlendLayer.swift */,
+				63EEFCD922F9150500774D43 /* LinearDodgeBlendLayer.swift */,
+				63EEFCD422F9150500774D43 /* LookupLayer.swift */,
+				63EEFCD722F9150500774D43 /* MultiplyBlendLayer.swift */,
+				63EEFCD622F9150500774D43 /* OverlayBlendLayer.swift */,
+				63EEFCD822F9150500774D43 /* ScreenBlendLayer.swift */,
+				63EEFCD522F9150500774D43 /* SoftLightBlendLayer.swift */,
+				63EEFCCE22F9150400774D43 /* WhiteBalanceLayer.swift */,
 			);
 			path = AdjustmentLayers;
 			sourceTree = "<group>";
@@ -249,7 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				63DC67D52142FC05005D7868 /* ComputeLayer.swift */,
-				636E6F5221434074006E59E0 /* RenderLayer.swift */,
+				63EEFCE622F9171400774D43 /* RenderLayer.swift */,
+				63AB92B2237281F70067AE8D /* IntensityAdjustable.swift */,
 			);
 			path = BaseLayers;
 			sourceTree = "<group>";
@@ -304,6 +301,24 @@
 			path = ToneKitTests;
 			sourceTree = "<group>";
 		};
+		63EEFCAD22F8FBFB00774D43 /* TextureIO */ = {
+			isa = PBXGroup;
+			children = (
+				63EEFCB022F8FC1100774D43 /* TextureInput.swift */,
+				63EEFCAB22F8FB1700774D43 /* TextureIO.swift */,
+				63EEFCAE22F8FC0900774D43 /* TextureOutput.swift */,
+			);
+			path = TextureIO;
+			sourceTree = "<group>";
+		};
+		63EEFCED22F97F0A00774D43 /* RenderLayers */ = {
+			isa = PBXGroup;
+			children = (
+				63EEFCEB22F97F0400774D43 /* SolidColorLayer.swift */,
+			);
+			path = RenderLayers;
+			sourceTree = "<group>";
+		};
 		63FF7146212DB1CF00CB68FB = {
 			isa = PBXGroup;
 			children = (
@@ -332,15 +347,14 @@
 				63FF7154212DB1CF00CB68FB /* Info.plist */,
 				63C28389212DB8D0002AA1FF /* ImageTexture.swift */,
 				63C28382212DB5B6002AA1FF /* MetalDevice.swift */,
-				63C28384212DB6E5002AA1FF /* TextureInput.swift */,
-				63C28386212DB726002AA1FF /* TextureOutput.swift */,
 				63EE1C2A213E1EDC0080DD59 /* TextureView.swift */,
-				63EE1C2C213E21780080DD59 /* UniformBufferProvider.swift */,
+				63A788C123025864001F6BB7 /* UniformSettings.swift */,
 				631C16082143968B00C710D5 /* AdjustmentLayers */,
 				63CE8591214FCE6B00A963FF /* BaseLayers */,
 				63C2838D212DBD2F002AA1FF /* Extensions */,
-				631C16012143839700C710D5 /* RenderLayers */,
+				63EEFCED22F97F0A00774D43 /* RenderLayers */,
 				63E58EE621421DB400BAE55E /* Shaders */,
+				63EEFCAD22F8FBFB00774D43 /* TextureIO */,
 			);
 			path = ToneKit;
 			sourceTree = "<group>";
@@ -530,49 +544,51 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63BCDFF521FD0B60009B56BB /* OverlayBlendLayer.swift in Sources */,
-				63BCDFED21FD0A21009B56BB /* DarkenBlendLayer.swift in Sources */,
-				63BEE65F21ED96F600C2CECF /* WhiteBalanceLayer.swift in Sources */,
+				63EEFCAF22F8FC0900774D43 /* TextureOutput.swift in Sources */,
 				6324ED20226ED220009300B0 /* blend_modes.metal in Sources */,
 				63C28393212DBD87002AA1FF /* MTLTexture.swift in Sources */,
+				63EEFCB122F8FC1100774D43 /* TextureInput.swift in Sources */,
+				63EEFCDF22F9150500774D43 /* ColorDodgeBlendLayer.swift in Sources */,
+				63EEFCE722F9171400774D43 /* RenderLayer.swift in Sources */,
 				63E58EE821421DD800BAE55E /* TextureView.metal in Sources */,
-				63BCDFEB21FD094C009B56BB /* ColorDodgeBlendLayer.swift in Sources */,
-				63EE1C2D213E21780080DD59 /* UniformBufferProvider.swift in Sources */,
+				63EEFCC022F9084700774D43 /* BrightnessLayer.swift in Sources */,
+				63EEFCEC22F97F0400774D43 /* SolidColorLayer.swift in Sources */,
+				63EEFCDE22F9150500774D43 /* LightenBlendLayer.swift in Sources */,
 				63BEE66121ED983500C2CECF /* WhiteBalance.metal in Sources */,
-				63C28385212DB6E5002AA1FF /* TextureInput.swift in Sources */,
 				63A0DB602209A4B10002B8CA /* MultiplyBlend.metal in Sources */,
 				63EE1C2B213E1EDC0080DD59 /* TextureView.swift in Sources */,
 				63C2838A212DB8D0002AA1FF /* ImageTexture.swift in Sources */,
-				631C160A2143969E00C710D5 /* BrightnessLayer.swift in Sources */,
+				63AB92B3237281F70067AE8D /* IntensityAdjustable.swift in Sources */,
+				63EEFCE022F9150500774D43 /* LookupLayer.swift in Sources */,
 				632E8155226370150063E628 /* yiq.metal in Sources */,
-				636A6C2E216F11E500A78D85 /* LookupLayer.swift in Sources */,
 				63EE1C29213E187E0080DD59 /* MTLTextureUsage.swift in Sources */,
-				63C28387212DB726002AA1FF /* TextureOutput.swift in Sources */,
-				63BCDFF321FD0B27009B56BB /* LightenBlendLayer.swift in Sources */,
-				63BCDFF121FD0ADF009B56BB /* LinearDodgeBlendLayer.swift in Sources */,
 				63A0DB5A2209A4690002B8CA /* SoftLightBlend.metal in Sources */,
+				63EEFCDD22F9150500774D43 /* HardLightBlendLayer.swift in Sources */,
 				63A0DB582209A45E0002B8CA /* HardLightBlend.metal in Sources */,
+				63EEFCE322F9150500774D43 /* MultiplyBlendLayer.swift in Sources */,
 				63C2838F212DBD42002AA1FF /* MTLSize.swift in Sources */,
 				63A0DB642209A4CB0002B8CA /* ScreenBlend.metal in Sources */,
 				636A6C30216F1FEB00A78D85 /* Lookup.metal in Sources */,
 				63A0DB5E2209A48A0002B8CA /* LightenBlend.metal in Sources */,
 				63BCDFFD21FD14CD009B56BB /* ColorDodgeBlend.metal in Sources */,
-				63BCDFF921FD0C0A009B56BB /* ScreenBlendLayer.swift in Sources */,
-				631C1603214383BD00C710D5 /* SolidColorLayer.swift in Sources */,
 				6324ED22226EDDDC009300B0 /* UIColor.swift in Sources */,
 				63A0DB5C2209A4720002B8CA /* LinearDodge.metal in Sources */,
+				63EEFCDA22F9150500774D43 /* WhiteBalanceLayer.swift in Sources */,
+				63EEFCE122F9150500774D43 /* SoftLightBlendLayer.swift in Sources */,
 				631C1607214395F200C710D5 /* Brightness.metal in Sources */,
 				63DC67D62142FC05005D7868 /* ComputeLayer.swift in Sources */,
+				63EEFCE222F9150500774D43 /* OverlayBlendLayer.swift in Sources */,
 				63A0DB562209A4520002B8CA /* DarkenBlend.metal in Sources */,
+				63EEFCDC22F9150500774D43 /* AlphaBlendLayer.swift in Sources */,
 				63DC67D921430A17005D7868 /* Passthrough.metal in Sources */,
-				632E908C21F098B70068FD3A /* AlphaBlendLayer.swift in Sources */,
-				63BCDFEF21FD0A48009B56BB /* HardLightBlendLayer.swift in Sources */,
-				63BCDFF721FD0BE5009B56BB /* MultiplyBlendLayer.swift in Sources */,
-				63BCDFFB21FD0C2D009B56BB /* SoftLightBlendLayer.swift in Sources */,
-				636E6F5321434074006E59E0 /* RenderLayer.swift in Sources */,
 				632E908E21F099750068FD3A /* AlphaBlend.metal in Sources */,
+				63EEFCDB22F9150500774D43 /* DarkenBlendLayer.swift in Sources */,
+				63EEFCAC22F8FB1700774D43 /* TextureIO.swift in Sources */,
 				631C1605214386E600C710D5 /* SolidColor.metal in Sources */,
+				63A788C223025864001F6BB7 /* UniformSettings.swift in Sources */,
+				63EEFCE422F9150500774D43 /* ScreenBlendLayer.swift in Sources */,
 				63A0DB622209A4BE0002B8CA /* OverlayBlend.metal in Sources */,
+				63EEFCE522F9150500774D43 /* LinearDodgeBlendLayer.swift in Sources */,
 				63C28383212DB5B6002AA1FF /* MetalDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
