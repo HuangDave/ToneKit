@@ -18,11 +18,15 @@ class ExampleEditViewController: UIViewController {
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }()
+
+    private var topSliderValueDidChangeHandler: ((Float) -> Void)?
+    private var bottomSliderValueDidChangeHandler: ((Float) -> Void)?
+
     var texture: ImageTexture = ImageTexture(image:   UIImage(named: "sample_image_1")!,
                                              options: ImageTexture.defaultOptions)
     var computeLayer: ComputeLayer!
-    private var topSliderValueDidChangeHandler: ((Float) -> Void)?
-    private var bottomSliderValueDidChangeHandler: ((Float) -> Void)?
+
+    // MARK: -
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +34,14 @@ class ExampleEditViewController: UIViewController {
         setupAdjustmentSliders()
         view.layoutIfNeeded()
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(userDidSelectSaveImage))
+
         texture.setTarget(computeLayer)
         computeLayer.setTarget(textureView)
-        texture.processTexture()
+        texture.process()
     }
 
     private func setupTextureView() {
@@ -61,11 +70,41 @@ class ExampleEditViewController: UIViewController {
             sliderStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30.0),
             sliderStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30.0),
             sliderStackView.heightAnchor.constraint(equalToConstant: 100.0)
-            ])
+        ])
+    }
+
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?,
+                     contextInfo: UnsafeRawPointer) {
+        var alertTitle: String = ""
+        if error != nil {
+            // we got back an error!
+            alertTitle = "Unable to save image!"
+        } else {
+            alertTitle = "Saved!"
+        }
+        let alertViewController = UIAlertController(title: alertTitle,
+                                                    message: "",
+                                                    preferredStyle: .alert)
+        alertViewController.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertViewController, animated: true)
+    }
+
+    @objc private func userDidSelectSaveImage() {
+        UIImageWriteToSavedPhotosAlbum(textureView.texture!.uiImage(),
+                                       self,
+                                       #selector(image(_:didFinishSavingWithError:contextInfo:)),
+                                       nil)
     }
 }
 // MARK: - UISlider Adjustments Configurations
 extension ExampleEditViewController {
+    func disableAllSliders() {
+        topSlider.isEnabled = false
+        bottomSlider.isEnabled = false
+        topSlider.isHidden = true
+        bottomSlider.isHidden = true
+    }
+
     func configureSingleSlider(block: (UISlider) -> Void) {
         bottomSlider.isEnabled = false
         bottomSlider.isHidden = true
@@ -86,11 +125,11 @@ extension ExampleEditViewController {
 
     @objc private func topSliderValueDidChange(slider: UISlider) {
         topSliderValueDidChangeHandler?(slider.value)
-        texture.processTexture()
+        texture.process()
     }
 
     @objc private func bottomSliderValueDidChange(slider: UISlider) {
         bottomSliderValueDidChangeHandler?(slider.value)
-        texture.processTexture()
+        texture.process()
     }
 }

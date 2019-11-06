@@ -1,16 +1,10 @@
 import Metal
 
-open class LinearDodgeBlendLayer: ComputeLayer {
-    public init() {
-        super.init(functionName: "compute_linear_dodge_blend", inputCount: 2)
-        uniforms.intensity = UniformBuffer<Float>()
-    }
+open class LinearDodgeBlendLayer: ComputeLayer, IntensityAdjustable {
+    open override var functionName: String { return "compute_linear_dodge_blend" }
+    open override var inputCount: UInt { return 2 }
 
-    open override func encodeUniforms(for commandEncoder: MTLComputeCommandEncoder?) {
-        guard let buffer = uniforms.intensity?
-            .nextAvailableBuffer(withContents: &intensity) else {
-                fatalError("Error getting MTLBuffer for intensity uniform")
-        }
-        commandEncoder?.setBuffer(buffer, offset: 0, index: 0)
+    open override func registerUniforms() {
+        uniforms.register(uniform: Uniform<Float>(initialValue: 1.0), withKey: "intensity")
     }
 }

@@ -2,13 +2,19 @@ import Metal
 import simd
 
 open class SolidColorLayer: ComputeLayer, RenderLayer {
-    /// Color to render.
+    open override var functionName: String { return "compute_solid_color" }
+    open override var inputCount: UInt { return 0 }
+
     public var color: UIColor = .black
 
     public init(color: UIColor = .black) {
-        super.init(functionName: "compute_solid_color", inputCount: 0)
+        super.init()
         self.color = color
-        uniforms.color = UniformBuffer<float4>(sizeOfBuffer: MemoryLayout<float4>.size)
+    }
+
+    open override func registerUniforms() {
+        uniforms.register(uniform: Uniform<SIMD4<Float>>(initialValue: SIMD4<Float>(repeating: 0.0)),
+                          withKey: "color")
     }
 
     open override func encodeUniforms(for commandEncoder: MTLComputeCommandEncoder?) {
@@ -18,16 +24,14 @@ open class SolidColorLayer: ComputeLayer, RenderLayer {
         var blue:  CGFloat = 0.0
         var alpha: CGFloat = 0.0
         color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        var colorUniform: float4 = float4([
+        let colorValue = SIMD4<Float>([
             Float(red),
             Float(green),
             Float(blue),
             Float(alpha)
-            ])
-        guard let buffer = uniforms.color?.nextAvailableBuffer(withContents: &colorUniform) else {
-            fatalError("Error getting MTLBuffer for color uniform")
-        }
-        buffer.label = "SolidColorLayer - float4 color uniform"
-        commandEncoder?.setBuffer(buffer, offset: 0, index: 0)
+        ])
+        uniforms.color!.value = colorValue
+
+        super.encodeUniforms(for: commandEncoder)
     }
 }
