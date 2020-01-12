@@ -1,7 +1,9 @@
-import Metal.MTLBuffer
+import Metal
 import simd
 
+//sourcery: AutoMockable
 public protocol UniformBufferable {
+  var label: String? { get }
   var bufferCount: Int { get }
   var bufferSize: Int { get }
   var nextAvailableBuffer: MTLBuffer { get }
@@ -10,10 +12,11 @@ public protocol UniformBufferable {
 // MARK: -
 @dynamicMemberLookup
 public final class UniformSettings {
-  private var uniforms: [String: UniformBufferable?] = [:]
+  private(set) internal var uniforms: [String: UniformBufferable?] = [:]
   /// Array containg the keys of the uniforms in the order that they were initially set.
   private var uniformOrder = [String]()
   public var uniformsList: [UniformBufferable] {
+    guard uniforms.capacity > 0 else { return [] }
     return uniformOrder.map { uniforms[$0]!! }
   }
 
@@ -23,6 +26,10 @@ public final class UniformSettings {
     }
     uniforms[key] = uniform
     uniformOrder.append(key)
+  }
+
+  public func register(_ orderedUniforms: [(uniform: UniformBufferable, key: String)]) {
+
   }
 
   public func nextAvailableBuffer(key: String) -> MTLBuffer {
@@ -41,25 +48,7 @@ extension UniformSettings {
   public subscript(dynamicMember member: String) -> Uniform<Int>? {
     return uniforms[member, default: nil] as? Uniform<Int>
   }
-  public subscript(dynamicMember member: String) -> Uniform<float4x4>? {
-    return uniforms[member, default: nil] as? Uniform<float4x4>
-  }
   public subscript(dynamicMember member: String) -> Uniform<SIMD4<Float>>? {
     return uniforms[member, default: nil] as? Uniform<SIMD4<Float>>
-  }
-  public subscript(dynamicMember member: String) -> Uniform<SIMD3<Float>>? {
-    return uniforms[member, default: nil] as? Uniform<SIMD3<Float>>
-  }
-  public subscript(dynamicMember member: String) -> Uniform<SIMD2<Float>>? {
-    return uniforms[member, default: nil] as? Uniform<SIMD2<Float>>
-  }
-  public subscript(dynamicMember member: String) -> Uniform<[SIMD4<Float>]>? {
-    return uniforms[member, default: nil] as? Uniform<[SIMD4<Float>]>
-  }
-  public subscript(dynamicMember member: String) -> Uniform<[SIMD3<Float>]>? {
-    return uniforms[member, default: nil] as? Uniform<[SIMD3<Float>]>
-  }
-  public subscript(dynamicMember member: String) -> Uniform<[SIMD2<Float>]>? {
-    return uniforms[member, default: nil] as? Uniform<[SIMD2<Float>]>
   }
 }

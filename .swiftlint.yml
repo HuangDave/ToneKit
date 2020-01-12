@@ -10,11 +10,8 @@ included: # paths to include during linting. `--path` is ignored if present.
   - ToneKit
   - ToneKitTests
   - ToneKitExample
-excluded: # paths to ignore during linting. Takes precedence over `included`.
-  - Carthage
-  - Pods
-  - Source/ExcludedFolder
-  - Source/ExcludedFile.swift
+excluded:
+  - ToneKitTests/Mocks
 # configurable rules can be customized from this configuration file
 # binary rules can set their severity level
 force_cast: warning # implicitly

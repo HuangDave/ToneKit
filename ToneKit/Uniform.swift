@@ -2,6 +2,7 @@ import Metal
 
 public final class Uniform<Type>: UniformBufferable {
   private let metalDevice: MetalDevice
+  public let label: String?
   /// Total number of allocated MTLBuffers.
   public let bufferCount: Int
   /// Total size of each buffer.
@@ -27,10 +28,12 @@ public final class Uniform<Type>: UniformBufferable {
   ///   - sizeOfBuffer: Memory size of the uniform type used for each buffer.
   ///   - initialValue: Initial value of the uniform.
   public init(metalDevice: MetalDevice = MetalDevice.shared,
+              label: String? = nil,
               bufferCount count: Int = 3,
               sizeOfBuffer: Int = MemoryLayout<Type>.size,
               initialValue: Type) {
     self.metalDevice = metalDevice
+    self.label = label
     bufferCount = count
     bufferSize = sizeOfBuffer
     buffers = [MTLBuffer](

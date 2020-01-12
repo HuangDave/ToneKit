@@ -1,0 +1,13 @@
+sourceryCommand: null
+ToneKitTests:
+  sources:
+    include:
+    - ./ToneKit
+  output:
+    ./ToneKitTests/Mocks/Mock.generated.swift
+  targets:
+    - ToneKitTests
+  testable:
+    - ToneKit
+  import:
+    - Metal

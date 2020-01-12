@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		6324ED22226EDDDC009300B0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324ED21226EDDDC009300B0 /* UIColor.swift */; };
+		634BCBFA23CB48CA00D17595 /* UniformSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634BCBF923CB48CA00D17595 /* UniformSettingsTests.swift */; };
+		634BCBFD23CB4AF000D17595 /* Mock.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634BCBFC23CB4AF000D17595 /* Mock.generated.swift */; };
 		635357212396B8A900B4CD4D /* AlphaBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635357202396B8A900B4CD4D /* AlphaBlendLayer.swift */; };
 		635357232396B8C900B4CD4D /* AlphaBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = 635357222396B8C900B4CD4D /* AlphaBlend.metal */; };
 		635357252396B8DB00B4CD4D /* blend_modes.metal in Sources */ = {isa = PBXBuildFile; fileRef = 635357242396B8DB00B4CD4D /* blend_modes.metal */; };
@@ -34,6 +36,9 @@
 		635357542396BE4600B4CD4D /* ExampleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635357532396BE4600B4CD4D /* ExampleSelectionViewController.swift */; };
 		635357562396BE9F00B4CD4D /* OverlayBlend.metal in Sources */ = {isa = PBXBuildFile; fileRef = 635357552396BE9F00B4CD4D /* OverlayBlend.metal */; };
 		635357582396BEAB00B4CD4D /* OverlayBlendLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635357572396BEAB00B4CD4D /* OverlayBlendLayer.swift */; };
+		6355DFF223CB4F0600460FFD /* SwiftyMocky in Frameworks */ = {isa = PBXBuildFile; productRef = 6355DFF123CB4F0600460FFD /* SwiftyMocky */; };
+		6355DFF523CB4F4700460FFD /* Quick in Frameworks */ = {isa = PBXBuildFile; productRef = 6355DFF423CB4F4700460FFD /* Quick */; };
+		6355DFF823CB4F9100460FFD /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 6355DFF723CB4F9100460FFD /* Nimble */; };
 		6363FB8A2398614400008634 /* Uniform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6363FB892398614400008634 /* Uniform.swift */; };
 		6363FB8C239867FD00008634 /* ExampleCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6363FB8B239867FD00008634 /* ExampleCategories.swift */; };
 		63832B4323969FC40064FECE /* Lookup.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63832B4123969FC40064FECE /* Lookup.metal */; };
@@ -105,6 +110,8 @@
 
 /* Begin PBXFileReference section */
 		6324ED21226EDDDC009300B0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		634BCBF923CB48CA00D17595 /* UniformSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniformSettingsTests.swift; sourceTree = "<group>"; };
+		634BCBFC23CB4AF000D17595 /* Mock.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mock.generated.swift; sourceTree = "<group>"; };
 		635357202396B8A900B4CD4D /* AlphaBlendLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaBlendLayer.swift; sourceTree = "<group>"; };
 		635357222396B8C900B4CD4D /* AlphaBlend.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = AlphaBlend.metal; sourceTree = "<group>"; };
 		635357242396B8DB00B4CD4D /* blend_modes.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = blend_modes.metal; sourceTree = "<group>"; };
@@ -180,6 +187,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6355DFF523CB4F4700460FFD /* Quick in Frameworks */,
+				6355DFF823CB4F9100460FFD /* Nimble in Frameworks */,
+				6355DFF223CB4F0600460FFD /* SwiftyMocky in Frameworks */,
 				63E58F0821421E3700BAE55E /* ToneKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +204,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		634BCBFB23CB4AF000D17595 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				634BCBFC23CB4AF000D17595 /* Mock.generated.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		6353574C2396BA0900B4CD4D /* BlendMode */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,7 +321,9 @@
 			isa = PBXGroup;
 			children = (
 				63E58F0721421E3700BAE55E /* Info.plist */,
+				634BCBFB23CB4AF000D17595 /* Mocks */,
 				63E58F1021421E9F00BAE55E /* ToneKitTests-Bridging-Header.h */,
+				634BCBF923CB48CA00D17595 /* UniformSettingsTests.swift */,
 			);
 			path = ToneKitTests;
 			sourceTree = "<group>";
@@ -398,6 +418,11 @@
 				63E58F0F21421E4700BAE55E /* PBXTargetDependency */,
 			);
 			name = ToneKitTests;
+			packageProductDependencies = (
+				6355DFF123CB4F0600460FFD /* SwiftyMocky */,
+				6355DFF423CB4F4700460FFD /* Quick */,
+				6355DFF723CB4F9100460FFD /* Nimble */,
+			);
 			productName = ToneKitTests;
 			productReference = 63E58F0321421E3700BAE55E /* ToneKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -455,6 +480,11 @@
 				Base,
 			);
 			mainGroup = 63FF7146212DB1CF00CB68FB;
+			packageReferences = (
+				6355DFF023CB4F0600460FFD /* XCRemoteSwiftPackageReference "SwiftyMocky" */,
+				6355DFF323CB4F4700460FFD /* XCRemoteSwiftPackageReference "Quick" */,
+				6355DFF623CB4F9100460FFD /* XCRemoteSwiftPackageReference "Nimble" */,
+			);
 			productRefGroup = 63FF7151212DB1CF00CB68FB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -527,6 +557,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634BCBFD23CB4AF000D17595 /* Mock.generated.swift in Sources */,
+				634BCBFA23CB48CA00D17595 /* UniformSettingsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +705,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5F9YSVH8J7;
@@ -701,6 +734,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5F9YSVH8J7;
@@ -725,6 +759,7 @@
 		63FF7162212DB1CF00CB68FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -789,6 +824,7 @@
 		63FF7163212DB1CF00CB68FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -947,6 +983,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6355DFF023CB4F0600460FFD /* XCRemoteSwiftPackageReference "SwiftyMocky" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MakeAWishFoundation/SwiftyMocky";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		6355DFF323CB4F4700460FFD /* XCRemoteSwiftPackageReference "Quick" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Quick";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		6355DFF623CB4F9100460FFD /* XCRemoteSwiftPackageReference "Nimble" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6355DFF123CB4F0600460FFD /* SwiftyMocky */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6355DFF023CB4F0600460FFD /* XCRemoteSwiftPackageReference "SwiftyMocky" */;
+			productName = SwiftyMocky;
+		};
+		6355DFF423CB4F4700460FFD /* Quick */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6355DFF323CB4F4700460FFD /* XCRemoteSwiftPackageReference "Quick" */;
+			productName = Quick;
+		};
+		6355DFF723CB4F9100460FFD /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6355DFF623CB4F9100460FFD /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 63FF7147212DB1CF00CB68FB /* Project object */;
 }
