@@ -3,7 +3,7 @@ ToneKit is a lightweight image processing framework written in Swift.
 
 ## Requirements
 - Swift: 5.0+
-- iOS: 10+
+- iOS: 12+
 - Xcode: 11+
 
 ## Installation
