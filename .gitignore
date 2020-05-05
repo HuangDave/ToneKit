@@ -33,3 +33,7 @@ xcuserdata
 ## VSCode
 .DS_Store
 .vscode/
+
+tools/
+
+ToneKitTests/Mocks/*
